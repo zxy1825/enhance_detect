@@ -1,11 +1,3 @@
-'''
-Author: gw00336465 gw00336465@ifyou.com
-Date: 2024-04-17 17:54:47
-LastEditors: gw00336465 gw00336465@ifyou.com
-LastEditTime: 2024-04-23 17:42:21
-FilePath: /YOLOv5/execulate.py
-Description: 用于评估单张/两张图片之间的性能指标的模块函数
-'''
 import os
 import numpy as np
 import matplotlib.pyplot as plt

@@ -1,11 +1,3 @@
-'''
-Author: gw00336465 gw00336465@ifyou.com
-Date: 2024-04-17 17:54:47
-LastEditors: gw00336465 gw00336465@ifyou.com
-LastEditTime: 2024-04-24 14:49:41
-FilePath: /YOLOv5/execulate.py
-Description: 用于评估单张/两张图片之间的性能指标的模块函数
-'''
 import os
 from tqdm import tqdm
 import numpy as np
