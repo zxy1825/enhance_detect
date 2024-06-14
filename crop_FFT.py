@@ -86,7 +86,7 @@ def calculate_difference_means_and_max(array1, array2):
 
 
 if __name__ == "__main__":
-    for method in ['square']: #, 'circle', 'diamond']:
+    for method in ['circle', 'diamond']: # 'square', 
         for t in [0.25, 0.5, 0.75, 0.99]:
             for stage in ['stage17', 'stage20', 'stage23']:
                 coco_path = f'coco_result/npy/{stage}_fft.npy'
@@ -99,7 +99,7 @@ if __name__ == "__main__":
                 # print("|  ExDark  | {:>14} | {:>13} | {:>10} |\n".format(np.mean(coco_mean1), np.mean(coco_mean2), np.abs(np.mean(coco_mean1)-np.mean(coco_mean2))))
                 high_pc, high_nc, high_diff_mean, high_diff_max = calculate_difference_means_and_max(coco_mean1, exdark_mean1)
                 low_pc, low_nc, low_diff_mean, low_diff_max = calculate_difference_means_and_max(coco_mean2, exdark_mean2)
-                print(f"| High frequency count : positive:{high_pc} | negative:{high_nc}")
-                print(f"|  Low frequency count : positive:{low_pc} | negative:{low_nc}")
-                print(f"| High frequency difference : mean:{high_diff_mean} | max:{high_diff_max}")
-                print(f"|  Low frequency difference : mean:{low_diff_mean} | max:{low_diff_max}")
+                print(f"|  Low frequency count : positive:{high_pc} | negative:{high_nc}")
+                print(f"| High frequency count : positive:{low_pc} | negative:{low_nc}")
+                print(f"|  Low frequency difference : mean:{high_diff_mean} | max:{high_diff_max}")
+                print(f"| High frequency difference : mean:{low_diff_mean} | max:{low_diff_max}")
