@@ -1,4 +1,4 @@
-# YOLOv5 🚀 by Ultralytics, AGPL-3.0 license
+# Ultralytics YOLOv5 🚀, AGPL-3.0 license
 """
 YOLO-specific modules.
 
@@ -246,10 +246,14 @@ class DetectionModel(BaseModel):
         # Build strides, anchors
         m = self.model[-1]  # Detect()
         if isinstance(m, (Detect, Segment)):
+
+            def _forward(x):
+                """Passes the input 'x' through the model and returns the processed output."""
+                return self.forward(x)[0] if isinstance(m, Segment) else self.forward(x)
+
             s = 256  # 2x min stride
             m.inplace = self.inplace
-            forward = lambda x: self.forward(x)[0] if isinstance(m, Segment) else self.forward(x)
-            m.stride = torch.tensor([s / x.shape[-2] for x in forward(torch.zeros(1, ch, s, s))])  # forward
+            m.stride = torch.tensor([s / x.shape[-2] for x in _forward(torch.zeros(1, ch, s, s))])  # forward
             check_anchor_order(m)
             m.anchors /= m.stride.view(-1, 1, 1)
             self.stride = m.stride
@@ -264,10 +268,10 @@ class DetectionModel(BaseModel):
         """Performs single-scale or augmented inference and may include profiling or visualization."""
         
         y = self.model_enhance(x) # y = enhanced x
-        with torch.no_grad():
-            if augment:
-                return self._forward_augment(y)  # augmented inference, None
-            return self._forward_once(y, profile, visualize)  # single-scale inference, train
+        # with torch.no_grad(): # DELETE
+        if augment:
+            return self._forward_augment(y)  # augmented inference, None
+        return self._forward_once(y, profile, visualize)  # single-scale inference, train
 
     def _forward_augment(self, x):
         """Performs augmented inference across different scales and flips, returning combined detections."""

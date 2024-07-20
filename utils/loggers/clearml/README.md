@@ -16,6 +16,7 @@
 
 🔭 Turn your newly trained <b>YOLOv5 model into an API</b> with just a few commands using ClearML Serving
 
+<<<<<<< HEAD
 <br />
 And so much more. It's up to you how many of these tools you want to use, you can stick to the experiment manager, or chain them all together into an impressive pipeline!
 <br />
@@ -26,6 +27,12 @@ And so much more. It's up to you how many of these tools you want to use, you ca
 <br />
 <br />
 
+=======
+And so much more. It's up to you how many of these tools you want to use, you can stick to the experiment manager, or chain them all together into an impressive pipeline!
+
+![ClearML scalars dashboard](https://github.com/thepycoder/clearml_screenshots/raw/main/experiment_manager_with_compare.gif)
+
+>>>>>>> origin/yolov5_src
 ## 🦾 Setting Things Up
 
 To keep track of your experiments and/or data, ClearML needs to communicate to a server. You have 2 options to get one:
@@ -34,6 +41,7 @@ Either sign up for free to the [ClearML Hosted Service](https://cutt.ly/yolov5-t
 
 1. Install the `clearml` python package:
 
+<<<<<<< HEAD
     ```bash
     pip install clearml
     ```
@@ -48,6 +56,20 @@ That's it! You're done 😎
 
 <br />
 
+=======
+   ```bash
+   pip install clearml
+   ```
+
+2. Connect the ClearML SDK to the server by [creating credentials](https://app.clear.ml/settings/workspace-configuration) (go right top to Settings -> Workspace -> Create new credentials), then execute the command below and follow the instructions:
+
+   ```bash
+   clearml-init
+   ```
+
+That's it! You're done 😎
+
+>>>>>>> origin/yolov5_src
 ## 🚀 Training YOLOv5 With ClearML
 
 To enable ClearML experiment tracking, simply install the ClearML pip package.
@@ -89,8 +111,11 @@ That's a lot right? 🤯 Now, we can visualize all of this information in the Cl
 
 There even more we can do with all of this information, like hyperparameter optimization and remote execution, so keep reading if you want to see how that works!
 
+<<<<<<< HEAD
 <br />
 
+=======
+>>>>>>> origin/yolov5_src
 ## 🔗 Dataset Version Management
 
 Versioning your data separately from your code is generally a good idea and makes it easy to acquire the latest version too. This repository supports supplying a dataset version ID, and it will make sure to get the data if it's not there yet. Next to that, this workflow also saves the used dataset ID as part of the task parameters, so you will always know for sure which data was used in which experiment!
@@ -157,8 +182,11 @@ Now that you have a ClearML dataset, you can very simply use it to train custom 
 python train.py --img 640 --batch 16 --epochs 3 --data clearml://<your_dataset_id> --weights yolov5s.pt --cache
 ```
 
+<<<<<<< HEAD
 <br />
 
+=======
+>>>>>>> origin/yolov5_src
 ## 👀 Hyperparameter Optimization
 
 Now that we have our experiments and data versioned, it's time to take a look at what we can build on top!
