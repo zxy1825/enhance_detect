@@ -30,6 +30,7 @@ class UNet(nn.Module):
         self.outc = OutConv(64, self.n_channels)
 
     def forward(self, x):
+        print(x.shape)
         x1 = self.inc(x)
         x2 = self.down1(x1)
         x3 = self.down2(x2)
