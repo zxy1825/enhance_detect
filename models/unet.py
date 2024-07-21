@@ -16,7 +16,6 @@ class UNet(nn.Module):
         super(UNet, self).__init__()
         self.n_channels = n_channels
         self.bilinear = bilinear
-        # number_heads怎么取呢？是否需要实验验证？
         self.down1 = Encoder(n_channels, 64, 8)
         self.down2 = Encoder(64, 128, 16)
         self.down3 = Encoder(128, 256, 32)
@@ -28,10 +27,10 @@ class UNet(nn.Module):
         self.outc = OutConv(64, self.n_channels)
 
     def forward(self, x):
+        print(x.shape)
         x1 = self.down1(x)
         x2 = self.down2(x1)
         x3 = self.down3(x2)
-        print(x3.size())
         x = self.doubleconv(x3)
         x = self.up1(x, x3)
         x = self.up2(x, x2)

@@ -56,7 +56,7 @@ from utils.general import (
     yaml_load,
 )
 from utils.torch_utils import copy_attr, smart_inference_mode
-from models.hat_arch import HAB
+from models.hab import HAB
 
 
 def autopad(k, p=None, d=1):
@@ -1133,7 +1133,7 @@ class Encoder(nn.Module):
             nn.BatchNorm2d(out_channels),
             nn.ReLU(inplace=True)
         )
-        '''self.hab = HAB(
+        self.hab = HAB(
             dim=out_channels,
             input_resolution=(1, 1),
             num_heads=num_heads,
@@ -1150,7 +1150,7 @@ class Encoder(nn.Module):
             drop_path=drop_path,
             act_layer=act_layer,
             norm_layer=norm_layer
-        )'''
+        )
         self.conv2 = nn.Sequential(
             nn.Conv2d(out_channels, out_channels, kernel_size=3, padding=1, bias=False),
             nn.BatchNorm2d(out_channels),
@@ -1159,13 +1159,17 @@ class Encoder(nn.Module):
         self.max_pool = nn.MaxPool2d(2)
  
     def forward(self, x):
+        print(f'input::{x.shape}')
         x = self.conv1(x)
-        # b, c, h, w = x.size()
-        # mid_resolution = (h, w)
-        # x = x.view(b, c, h * w).permute(0, 2, 1)
-        # x = self.hab(x, mid_resolution, None, None)
-        # x = x.permute(0, 2, 1).view(b, c, h, w)
+        print(f'before::{x.shape}')
+        b, c, h, w = x.size()
+        mid_resolution = (h, w)
+        x = x.view(b, c, h * w).permute(0, 2, 1)
+        x = self.hab(x, mid_resolution)
+        x = x.permute(0, 2, 1).view(b, c, h, w)
+        print(f'after::{x.shape}')
         x = self.conv2(x)
+        print(f'output::{x.shape}')
         x = self.max_pool(x)
         return x
     
@@ -1211,7 +1215,7 @@ class Decoder(nn.Module):
                 nn.BatchNorm2d(self.mid_channels),
                 nn.ReLU(inplace=True)
         )
-        '''
+        
         self.hab = HAB(
             dim=self.mid_channels,
             input_resolution=(1, 1),
@@ -1229,7 +1233,7 @@ class Decoder(nn.Module):
             drop_path=drop_path,
             act_layer=act_layer,
             norm_layer=norm_layer
-        )'''
+        )
         self.conv2 = nn.Sequential(
             nn.Conv2d(self.mid_channels, out_channels, kernel_size=3, padding=1, bias=False),
             nn.BatchNorm2d(out_channels),
@@ -1245,12 +1249,14 @@ class Decoder(nn.Module):
                       diffY // 2, diffY - diffY // 2])
         # concat with former tensor
         x = torch.cat([x_, x], dim=1)
+        print(x.shape)
+        err
         x = self.conv1(x)
-        # b, c, h, w = x.size()
-        # mid_resolution = (h, w)
-        # x = x.view(b, c, h * w).permute(0, 2, 1)
-        # x = self.hab(x, mid_resolution)
-        # x = x.permute(0, 2, 1).view(b, c, h, w)
+        b, c, h, w = x.size()
+        mid_resolution = (h, w)
+        x = x.view(b, c, h * w).permute(0, 2, 1)
+        x = self.hab(x, mid_resolution)
+        x = x.permute(0, 2, 1).view(b, c, h, w)
         x = self.conv2(x)
         return x
 

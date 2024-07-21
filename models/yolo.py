@@ -266,8 +266,10 @@ class DetectionModel(BaseModel):
 
     def forward(self, x, augment=False, profile=False, visualize=False):
         """Performs single-scale or augmented inference and may include profiling or visualization."""
-        
+        print(f'INPUT::{x.shape}')
         y = self.model_enhance(x) # y = enhanced x
+        print(f'INPUT::{y.shape}')
+
         # with torch.no_grad(): # DELETE
         if augment:
             return self._forward_augment(y)  # augmented inference, None
