@@ -220,7 +220,7 @@ class DetectionModel(BaseModel):
         """Initializes YOLOv5 model with configuration file, input channels, number of classes, and custom anchors."""
         super().__init__()
 
-        self.model_enhance = UNet(ch)
+        self.model_enhance = UNet(ch, bilinear=False)
 
         if isinstance(cfg, dict):
             self.yaml = cfg  # model dict
