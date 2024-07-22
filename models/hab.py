@@ -5,7 +5,7 @@ FilePath     : /enhance_detect/models/hab.py
 Description  :  
 Author       : Zhang Xiuyu
 LastEditors  : Zhang Xiuyu
-LastEditTime : 2024-07-21 20:32:06
+LastEditTime : 2024-07-22 23:41:34
 '''
 import math
 import torch
@@ -274,7 +274,7 @@ class HAB(nn.Module):
         self.mlp = Mlp(in_features=dim, hidden_features=mlp_hidden_dim, act_layer=act_layer, drop=drop)
 
     def forward(self, x, x_size, rpi_sa=None, attn_mask=None):
-        x, x_size=BCHW_to_BPC(x)
+        # x, x_size=BCHW_to_BPC(x)
         h, w = x_size
         b, _, c = x.shape
         # assert seq_len == h * w, "input feature has wrong size"
@@ -316,22 +316,22 @@ class HAB(nn.Module):
         # FFN
         x = shortcut + self.drop_path(attn_x) + conv_x * self.conv_scale
         x = x + self.drop_path(self.mlp(self.norm2(x)))
-        BPC_to_BCHW(x, x_size)
+        # BPC_to_BCHW(x, x_size)
         return x
     
-def BCHW_to_BPC(x):
-    b, c, h, w = x.size()
-    mid_resolution = (h, w)
-    x = x.view(b, c, h * w).permute(0, 2, 1)
-    return x, mid_resolution
+# def BCHW_to_BPC(x):
+#     b, c, h, w = x.size()
+#     mid_resolution = (h, w)
+#     x = x.view(b, c, h * w).permute(0, 2, 1)
+#     return x, mid_resolution
   
 
-def BPC_to_BCHW(x, mid_resolution):
-    b, _, c = x.size()
-    h, w = mid_resolution
-    x = x.permute(0, 2, 1).view(b, c, h, w)
+# def BPC_to_BCHW(x, mid_resolution):
+#     b, _, c = x.size()
+#     h, w = mid_resolution
+#     x = x.permute(0, 2, 1).view(b, c, h, w)
 
 
-a = HAB(512, (40, 40), 8, window_size=8)
-a(torch.zeros(1, 512, 40, 40), (40, 40), None, None)
+# a = HAB(512, (40, 40), 8, window_size=8)
+# a(torch.zeros(1, 512, 40, 40), (40, 40), None, None)
 # 恒源云

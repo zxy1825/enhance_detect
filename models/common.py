@@ -1107,41 +1107,155 @@ class DoubleConv(nn.Module):
 class Down(nn.Module):
     """Downscaling with maxpool then double conv"""
  
-    def __init__(self, in_channels, out_channels):
+    def __init__(self,
+                 in_channels,
+                 out_channels,
+                 num_heads,
+                 window_size=7,
+                 shift_size=0,
+                 compress_ratio=3,
+                 squeeze_factor=30,
+                 conv_scale=0.01,
+                 mlp_ratio=4.,
+                 qkv_bias=True,
+                 qk_scale=None,
+                 drop=0.,
+                 attn_drop=0.,
+                 drop_path=0.,
+                 act_layer=nn.GELU,
+                 norm_layer=nn.LayerNorm):
         super().__init__()
-        self.maxpool_conv = nn.Sequential(
-            nn.MaxPool2d(2),
-            DoubleConv(in_channels, out_channels)
+        self.maxpool = nn.MaxPool2d(2)
+        self.conv1 = nn.Sequential(
+            nn.Conv2d(in_channels, out_channels, kernel_size=3, padding=1, bias=False),
+            nn.BatchNorm2d(out_channels),
+            nn.ReLU(inplace=True)
+        )
+        self.hab = HAB(
+            dim=out_channels,
+            input_resolution=(1, 1),
+            num_heads=num_heads,
+            window_size=window_size,
+            shift_size=shift_size,
+            compress_ratio=compress_ratio,
+            squeeze_factor=squeeze_factor,
+            conv_scale=conv_scale,
+            mlp_ratio=mlp_ratio,
+            qkv_bias=qkv_bias,
+            qk_scale=qk_scale,
+            drop=drop,
+            attn_drop=attn_drop,
+            drop_path=drop_path,
+            act_layer=act_layer,
+            norm_layer=norm_layer
+        )
+        self.conv2 = nn.Sequential(
+            nn.Conv2d(out_channels, out_channels, kernel_size=3, padding=1, bias=False),
+            nn.BatchNorm2d(out_channels),
+            nn.ReLU(inplace=True)
         )
  
     def forward(self, x):
-        return self.maxpool_conv(x)
+        x = self.maxpool(x)
+        x = self.conv1(x)
+        b, c, h, w = x.size()
+        x_size = (h, w)
+        x = x.view(b, c, h * w).permute(0, 2, 1)
+        x = self.hab(x, x_size)
+        x = x.permute(0, 2, 1).view(b, c, h, w)
+        x = self.conv2(x)
+        return x
     
 
 class Up(nn.Module):
     """Upscaling then double conv"""
  
-    def __init__(self, in_channels, out_channels, bilinear=True):
+    def __init__(self, 
+                 in_channels, 
+                 out_channels, 
+                 num_heads,
+                 window_size=7,
+                 shift_size=0,
+                 compress_ratio=3,
+                 squeeze_factor=30,
+                 conv_scale=0.01,
+                 mlp_ratio=4.,
+                 qkv_bias=True,
+                 qk_scale=None,
+                 drop=0.,
+                 attn_drop=0.,
+                 drop_path=0.,
+                 act_layer=nn.GELU,
+                 norm_layer=nn.LayerNorm,
+                 bilinear=True):
         super().__init__()
- 
+        self.bilinear = bilinear
         # if bilinear, use the normal convolutions to reduce the number of channels
-        if bilinear:
+        if self.bilinear:
+            self.mid_ch = in_channels // 2
             self.up = nn.Upsample(scale_factor=2, mode='bilinear', align_corners=True)
-            self.conv = DoubleConv(in_channels, out_channels, in_channels // 2)
+            self.conv1 = nn.Sequential(
+                nn.Conv2d(in_channels, self.mid_ch, kernel_size=3, padding=1, bias=False),
+                nn.BatchNorm2d(self.mid_ch),
+                nn.ReLU(inplace=True)
+            )
         else:
+            self.mid_ch = out_channels
             self.up = nn.ConvTranspose2d(in_channels, in_channels // 2, kernel_size=2, stride=2)
-            self.conv = DoubleConv(in_channels, out_channels)
+            self.conv1 = nn.Sequential(
+                nn.Conv2d(in_channels, self.mid_ch, kernel_size=3, padding=1, bias=False),
+                nn.BatchNorm2d(self.mid_ch),
+                nn.ReLU(inplace=True)
+            )
+        self.hab = HAB(
+            dim=self.mid_ch,
+            input_resolution=(1, 1),
+            num_heads=num_heads,
+            window_size=window_size,
+            shift_size=shift_size,
+            compress_ratio=compress_ratio,
+            squeeze_factor=squeeze_factor,
+            conv_scale=conv_scale,
+            mlp_ratio=mlp_ratio,
+            qkv_bias=qkv_bias,
+            qk_scale=qk_scale,
+            drop=drop,
+            attn_drop=attn_drop,
+            drop_path=drop_path,
+            act_layer=act_layer,
+            norm_layer=norm_layer
+        )
+        self.conv2 = nn.Sequential(
+            nn.Conv2d(self.mid_ch, out_channels, kernel_size=3, padding=1, bias=False),
+            nn.BatchNorm2d(out_channels),
+            nn.ReLU(inplace=True)
+        )
  
-    def forward(self, x1, x2):
-        x1 = self.up(x1)
-        # input is CHW
-        diffY = x2.size()[2] - x1.size()[2]
-        diffX = x2.size()[3] - x1.size()[3]
- 
-        x1 = F.pad(x1, [diffX // 2, diffX - diffX // 2,
-                        diffY // 2, diffY - diffY // 2])
-        x = torch.cat([x2, x1], dim=1)
-        return self.conv(x)
+    def forward(self, x, x_):
+        x = self.up(x)
+        if self.bilinear:
+            # input is CHW
+            diffY = x_.size()[2] - x.size()[2]
+            diffX = x_.size()[3] - x.size()[3]
+            x = F.pad(x, [diffX // 2, diffX - diffX // 2,
+                            diffY // 2, diffY - diffY // 2])
+            x = torch.cat([x_, x], dim=1)
+            x = self.conv1(x)
+        else :
+            # input is CHW
+            diffY = x_.size()[2] - x.size()[2]
+            diffX = x_.size()[3] - x.size()[3]
+            x = F.pad(x, [diffX // 2, diffX - diffX // 2,
+                            diffY // 2, diffY - diffY // 2])
+            x = torch.cat([x_, x], dim=1)
+            x = self.conv1(x)
+        b, c, h, w = x.size()
+        x_size = (h, w)
+        x = x.view(b, c, h * w).permute(0, 2, 1)
+        x = self.hab(x, x_size)
+        x = x.permute(0, 2, 1).view(b, c, h, w)
+        x = self.conv2(x)
+        return x
  
  
 class OutConv(nn.Module):
@@ -1151,3 +1265,4 @@ class OutConv(nn.Module):
  
     def forward(self, x):
         return self.conv(x)
+
