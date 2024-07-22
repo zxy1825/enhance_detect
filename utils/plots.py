@@ -1,4 +1,5 @@
-# YOLOv5 🚀 by Ultralytics, AGPL-3.0 license
+# Ultralytics YOLOv5 🚀, AGPL-3.0 license
+
 """Plotting utils."""
 
 import contextlib
@@ -75,7 +76,7 @@ class Colors:
 colors = Colors()  # create instance for 'from utils.plots import colors'
 
 
-def feature_visualization(x, module_type, stage, n=32, save_dir=Path("/media/sugar/71621f35-5159-4d8b-837a-18d01bacf880/detect/coco")): # runs/detect/exp
+def feature_visualization(x, module_type, stage, n=32, save_dir=Path("runs/detect/exp")):
     """
     x:              Features to be visualized
     module_type:    Module type
@@ -90,18 +91,18 @@ def feature_visualization(x, module_type, stage, n=32, save_dir=Path("/media/sug
         if height > 1 and width > 1:
             f = save_dir / f"stage{stage}_{module_type.split('.')[-1]}_features.png"  # filename
 
-            # blocks = torch.chunk(x[0].cpu(), channels, dim=0)  # select batch index 0, block by channels
-            # n = min(n, channels)  # number of plots
-            # fig, ax = plt.subplots(math.ceil(n / 8), 8, tight_layout=True)  # 8 rows x n/8 cols
-            # ax = ax.ravel()
-            # plt.subplots_adjust(wspace=0.05, hspace=0.05)
-            # for i in range(n):
-                # ax[i].imshow(blocks[i].squeeze())  # cmap='gray'
-                # ax[i].axis("off")
+            blocks = torch.chunk(x[0].cpu(), channels, dim=0)  # select batch index 0, block by channels
+            n = min(n, channels)  # number of plots
+            fig, ax = plt.subplots(math.ceil(n / 8), 8, tight_layout=True)  # 8 rows x n/8 cols
+            ax = ax.ravel()
+            plt.subplots_adjust(wspace=0.05, hspace=0.05)
+            for i in range(n):
+                ax[i].imshow(blocks[i].squeeze())  # cmap='gray'
+                ax[i].axis("off")
 
             LOGGER.info(f"Saving {f}... ({n}/{channels})")
-            # plt.savefig(f, dpi=300, bbox_inches="tight")
-            # plt.close()
+            plt.savefig(f, dpi=300, bbox_inches="tight")
+            plt.close()
             np.save(str(f.with_suffix(".npy")), x[0].cpu().numpy())  # npy save
 
 
@@ -124,6 +125,9 @@ def butter_lowpass_filtfilt(data, cutoff=1500, fs=50000, order=5):
 
     # https://stackoverflow.com/questions/28536191/how-to-filter-smooth-with-scipy-numpy
     def butter_lowpass(cutoff, fs, order):
+        """Applies a low-pass Butterworth filter to a signal with specified cutoff frequency, sample rate, and filter
+        order.
+        """
         nyq = 0.5 * fs
         normal_cutoff = cutoff / nyq
         return butter(order, normal_cutoff, btype="low", analog=False)

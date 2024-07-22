@@ -1,4 +1,5 @@
-# YOLOv5 🚀 by Ultralytics, AGPL-3.0 license
+# Ultralytics YOLOv5 🚀, AGPL-3.0 license
+
 """Model validation metrics."""
 
 import math
@@ -11,13 +12,15 @@ import torch
 
 from utils import TryExcept, threaded
 
-# 使用度量P、R的加权和来计算模型的适合度，mAP@0.5, mAP@0.5:0.95
+
 def fitness(x):
+    """Calculates fitness of a model using weighted sum of metrics P, R, mAP@0.5, mAP@0.5:0.95."""
     w = [0.0, 0.0, 0.1, 0.9]  # weights for [P, R, mAP@0.5, mAP@0.5:0.95]
     return (x[:, :4] * w).sum(1)
 
-# 将方框滤波器平滑应用于分数为“f”的数组“y”，生成平滑的数组。
+
 def smooth(y, f=0.05):
+    """Applies box filter smoothing to array `y` with fraction `f`, yielding a smoothed array."""
     nf = round(len(y) * f * 2) // 2 + 1  # number of filter elements (must be odd)
     p = np.ones(nf // 2)  # ones padding
     yp = np.concatenate((p * y[0], y, p * y[-1]), 0)  # y padded

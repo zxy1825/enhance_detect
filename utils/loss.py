@@ -1,4 +1,5 @@
-# YOLOv5 🚀 by Ultralytics, AGPL-3.0 license
+# Ultralytics YOLOv5 🚀, AGPL-3.0 license
+
 """Loss functions."""
 
 import torch
@@ -7,12 +8,10 @@ import torch.nn as nn
 from utils.metrics import bbox_iou
 from utils.torch_utils import de_parallel
 
-# 这是一个用于减少过拟合的技术，通过调整标签值来平滑正类和负类的目标。
 def smooth_BCE(eps=0.1):
     """Returns label smoothing BCE targets for reducing overfitting; pos: `1.0 - 0.5*eps`, neg: `0.5*eps`. For details see https://github.com/ultralytics/yolov3/issues/238#issuecomment-598028441"""
     return 1.0 - 0.5 * eps, 0.5 * eps
 
-# 修改版的二值交叉熵损失，用来减少缺失标签的影响。
 class BCEBlurWithLogitsLoss(nn.Module):
     # BCEwithLogitLoss() with reduced missing label effects.
     def __init__(self, alpha=0.05):
@@ -35,7 +34,6 @@ class BCEBlurWithLogitsLoss(nn.Module):
         loss *= alpha_factor
         return loss.mean()
 
-# 这是一种改进的损失函数，通过调整难以分类样本的权重来处理类别不平衡问题。它更关注那些难以正确分类的案例。
 class FocalLoss(nn.Module):
     # Wraps focal loss around existing loss_fcn(), i.e. criteria = FocalLoss(nn.BCEWithLogitsLoss(), gamma=1.5)
     def __init__(self, loss_fcn, gamma=1.5, alpha=0.25):
@@ -52,7 +50,10 @@ class FocalLoss(nn.Module):
     def forward(self, pred, true):
         """Calculates the focal loss between predicted and true labels using a modified BCEWithLogitsLoss."""
         loss = self.loss_fcn(pred, true)
-        
+        # p_t = torch.exp(-loss)
+        # loss *= self.alpha * (1.000001 - p_t) ** self.gamma  # non-zero power for gradient stability
+
+        # TF implementation https://github.com/tensorflow/addons/blob/v0.7.1/tensorflow_addons/losses/focal_loss.py
         pred_prob = torch.sigmoid(pred)  # prob from logits
         p_t = true * pred_prob + (1 - true) * (1 - pred_prob)
         alpha_factor = true * self.alpha + (1 - true) * (1 - self.alpha)
@@ -66,7 +67,6 @@ class FocalLoss(nn.Module):
         else:  # 'none'
             return loss
 
-# 质量焦点损失（Quality Focal Loss），又是 Focal Loss 的变种，进一步调整了损失函数来处理标签不平衡。
 class QFocalLoss(nn.Module):
     # Wraps Quality focal loss around existing loss_fcn(), i.e. criteria = FocalLoss(nn.BCEWithLogitsLoss(), gamma=1.5)
     def __init__(self, loss_fcn, gamma=1.5, alpha=0.25):
@@ -96,15 +96,14 @@ class QFocalLoss(nn.Module):
         else:  # 'none'
             return loss
 
-# 这是 YOLOv5 模型损失计算的主体类，它包括类别损失、边界框损失和对象损失的计算。它也处理了目标检测任务中的多尺度预测和动态平衡损失权重。
 class ComputeLoss:
     sort_obj_iou = False
 
     # Compute losses
-    def __init__(self, detect_model, autobalance=False):
+    def __init__(self, model, autobalance=False):
         """Initializes ComputeLoss with model and autobalance option, autobalances losses if True."""
-        device = next(detect_model.parameters()).device  # get model device
-        h = detect_model.hyp  # hyperparameters
+        device = next(model.parameters()).device  # get model device
+        h = model.hyp  # hyperparameters
 
         # Define criteria
         BCEcls = nn.BCEWithLogitsLoss(pos_weight=torch.tensor([h["cls_pw"]], device=device))
@@ -118,7 +117,7 @@ class ComputeLoss:
         if g > 0:
             BCEcls, BCEobj = FocalLoss(BCEcls, g), FocalLoss(BCEobj, g)
 
-        m = de_parallel(detect_model).detect_model[-1]  # Detect() module
+        m = de_parallel(model).model[-1]  # Detect() module
         self.balance = {3: [4.0, 1.0, 0.4]}.get(m.nl, [4.0, 1.0, 0.25, 0.06, 0.02])  # P3-P7
         self.ssi = list(m.stride).index(16) if autobalance else 0  # stride 16 index
         self.BCEcls, self.BCEobj, self.gr, self.hyp, self.autobalance = BCEcls, BCEobj, 1.0, h, autobalance

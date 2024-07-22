@@ -1,4 +1,5 @@
-# YOLOv5 🚀 by Ultralytics, AGPL-3.0 license
+# Ultralytics YOLOv5 🚀, AGPL-3.0 license
+
 """Logging utils."""
 
 import json
@@ -21,7 +22,15 @@ RANK = int(os.getenv("RANK", -1))
 try:
     from torch.utils.tensorboard import SummaryWriter
 except ImportError:
+<<<<<<< HEAD
     SummaryWriter = lambda *args: None  # None = SummaryWriter(str)
+=======
+
+    def SummaryWriter(*args):
+        """Fall back to SummaryWriter returning None if TensorBoard is not installed."""
+        return None  # None = SummaryWriter(str)
+
+>>>>>>> master
 
 try:
     import wandb

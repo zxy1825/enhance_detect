@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+# Ultralytics YOLOv5 🚀, AGPL-3.0 license
+
+>>>>>>> master
 import argparse
 import json
 import logging

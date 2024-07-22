@@ -1,4 +1,5 @@
-# YOLOv5 🚀 by Ultralytics, AGPL-3.0 license
+# Ultralytics YOLOv5 🚀, AGPL-3.0 license
+
 """Download utils."""
 
 import logging
@@ -9,14 +10,9 @@ from pathlib import Path
 import requests
 import torch
 
-"""
-功能：判断给定的字符串是否为有效的URL地址。如果check参数为真，还会检查该URL在线上是否存在。
-参数：
-    url：待检查的字符串。
-    check：是否检查URL在线上是否存在。
-返回值：如果是有效的URL并且（如果check为真）在线上存在，则返回True；否则返回False。
-"""
+
 def is_url(url, check=True):
+    """Determines if a string is a URL and optionally checks its existence online, returning a boolean."""
     try:
         url = str(url)
         result = urllib.parse.urlparse(url)
@@ -25,35 +21,22 @@ def is_url(url, check=True):
     except (AssertionError, urllib.request.HTTPError):
         return False
 
-"""
-功能：使用gsutil du命令返回Google Cloud Storage URL上文件的大小（字节为单位）。
-参数：
-    url：Google Cloud Storage的URL。
-返回值：文件的大小（字节为单位），如果命令失败或输出为空，则返回0。
-"""
+
 def gsutil_getsize(url=""):
+    """
+    Returns the size in bytes of a file at a Google Cloud Storage URL using `gsutil du`.
+
+    Returns 0 if the command fails or output is empty.
+    """
     output = subprocess.check_output(["gsutil", "du", url], shell=True, encoding="utf-8")
     return int(output.split()[0]) if output else 0
 
-"""
-功能：返回给定URL的可下载文件大小（字节为单位）；如果未找到，则默认为-1。
-参数：
-    url：文件的URL地址。
-返回值：文件的大小（字节为单位），如果未找到则为-1。
-"""
+
 def url_getsize(url="https://ultralytics.com/images/bus.jpg"):
     """Returns the size in bytes of a downloadable file at a given URL; defaults to -1 if not found."""
     response = requests.head(url, allow_redirects=True)
     return int(response.headers.get("content-length", -1))
 
-"""
-功能：使用curl从URL下载文件到指定的文件名。
-参数：
-    url：文件的URL地址。
-    filename：保存文件的路径和名称。
-    silent：是否在下载时不显示进度条和其他消息。
-返回值：如果下载成功，则返回True；否则返回False。
-"""
 def curl_download(url, filename, *, silent: bool = False) -> bool:
     """Download a file from a url to a filename using curl."""
     silent_option = "sS" if silent else ""  # silent
@@ -73,17 +56,13 @@ def curl_download(url, filename, *, silent: bool = False) -> bool:
     )
     return proc.returncode == 0
 
-"""
-功能：从URL（或备用URL）下载文件到指定路径，如果文件大小超过最小字节数，则执行此操作。如果下载不完整，则会移除下载的部分。
-参数：
-    file：文件路径。
-    url：主URL地址。
-    url2：备用URL地址。
-    min_bytes：文件的最小字节数。
-    error_msg：错误消息模板。
-行为：尝试从主URL下载；如果失败，尝试从备用URL下载。检查下载文件的大小，并处理错误情况。
-"""
+
 def safe_download(file, url, url2=None, min_bytes=1e0, error_msg=""):
+    """
+    Downloads a file from a URL (or alternate URL) to a specified path if file is above a minimum size.
+
+    Removes incomplete downloads.
+    """
     from utils.general import LOGGER
 
     file = Path(file)
@@ -105,19 +84,15 @@ def safe_download(file, url, url2=None, min_bytes=1e0, error_msg=""):
             LOGGER.info(f"ERROR: {assert_msg}\n{error_msg}")
         LOGGER.info("")
 
-"""
-功能：如果本地不存在文件，则尝试从GitHub发布资产或直接URL下载文件，支持备用版本。
-参数：
-    file：文件路径。
-    repo：GitHub仓库名称。
-    release：GitHub发行版本。
-行为：检查文件是否已存在；如果不存在，则尝试从GitHub或直接URL下载。支持从特定版本或最新版本的GitHub仓库中下载文件。
-"""
+
 def attempt_download(file, repo="ultralytics/yolov5", release="v7.0"):
+    """Downloads a file from GitHub release assets or via direct URL if not found locally, supporting backup
+    versions.
+    """
     from utils.general import LOGGER
 
     def github_assets(repository, version="latest"):
-        # Return GitHub repo tag (i.e. 'v7.0') and assets (i.e. ['yolov5s.pt', 'yolov5m.pt', ...])
+        """Fetches GitHub repository release tag and asset names using the GitHub API."""
         if version != "latest":
             version = f"tags/{version}"  # i.e. tags/v7.0
         response = requests.get(f"https://api.github.com/repos/{repository}/releases/{version}").json()  # github api

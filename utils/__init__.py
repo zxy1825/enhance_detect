@@ -1,4 +1,5 @@
-# YOLOv5 🚀 by Ultralytics, AGPL-3.0 license
+# Ultralytics YOLOv5 🚀, AGPL-3.0 license
+
 """utils/initialization."""
 
 import contextlib
@@ -34,6 +35,10 @@ def threaded(func):
     """Decorator @threaded to run a function in a separate thread, returning the thread instance."""
 
     def wrapper(*args, **kwargs):
+<<<<<<< HEAD
+=======
+        """Runs the decorated function in a separate daemon thread and returns the thread instance."""
+>>>>>>> master
         thread = threading.Thread(target=func, args=args, kwargs=kwargs, daemon=True)
         thread.start()
         return thread
