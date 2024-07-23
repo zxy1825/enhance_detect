@@ -197,6 +197,7 @@ def train(hyp, opt, device, callbacks):
 
     # Config
     plots = not evolve and not opt.noplots  # create plots
+    print(f"DEBUG::{device}")
     cuda = device.type != "cpu"
     init_seeds(opt.seed + 1 + RANK, deterministic=True)
     with torch_distributed_zero_first(LOCAL_RANK):

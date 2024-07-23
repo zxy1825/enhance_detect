@@ -1,1 +1,1 @@
-python train.py --batch-size 2 --epochs 80 --device 0 --data ./data/Exdark_Source.yaml --weights ./weights/src_s.pt --img 640 --cfg ./models/yolov5s.yaml 
+python train.py --batch-size 2 --epochs 80 --device cpu --data ./data/Exdark_Source.yaml --weights ./weights/src_s.pt --img 640 --cfg ./models/yolov5s.yaml 
