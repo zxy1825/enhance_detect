@@ -1,16 +1,16 @@
 #!/usr/bin/env python
 # coding=utf-8
 '''
-FilePath     : /enhance_detect/models/unet.py
+FilePath     : /enh_yov5/models/unet.py
 Description  : unet network class
 Author       : Zhang Xiuyu
 LastEditors  : Zhang Xiuyu
-LastEditTime : 2024-07-23 00:27:37
+LastEditTime : 2024-08-19 16:25:50
 '''
 
-import torch
 import torch.nn as nn
-import torch.nn.functional as F
+import torch.utils.checkpoint as cp
+
 from models.common import DoubleConv,Up, Down, OutConv
 
 class UNet(nn.Module):
@@ -43,3 +43,16 @@ class UNet(nn.Module):
         x = self.up4(x, x1)
         logits = self.outc(x)
         return logits
+    
+
+    def use_checkpointing(self):
+        self.inc = cp.checkpoint(self.inc)
+        self.down1 = cp.checkpoint(self.down1)
+        self.down2 = cp.checkpoint(self.down2)
+        self.down3 = cp.checkpoint(self.down3)
+        self.down4 = cp.checkpoint(self.down4)
+        self.up1 = cp.checkpoint(self.up1)
+        self.up2 = cp.checkpoint(self.up2)
+        self.up3 = cp.checkpoint(self.up3)
+        self.up4 = cp.checkpoint(self.up4)
+        self.outc = cp.checkpoint(self.outc)

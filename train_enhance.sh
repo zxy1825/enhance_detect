@@ -1,0 +1,1 @@
+python enhance/train.py -e 100 -b 2 -d '/mnt/data/ExDark/Source_ExDark/images/val' -m -a 0.8 -c 3 --bilinear -v 10.0
