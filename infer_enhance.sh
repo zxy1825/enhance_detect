@@ -1,0 +1,2 @@
+export PYTHONPATH=$(pwd)
+python enhance/infer.py -m './checkpoints/checkpoint_epoch40.pth' -i '/mnt/data/ExDark/Source_ExDark/images/val_' -o '/mnt/data/ExDark/Source_ExDark/images/val_infer' --bilinear -c 3

@@ -5,7 +5,7 @@ FilePath     : /enh_yov5/enhance/train.py
 Description  :  
 Author       : Zhang Xiuyu
 LastEditors  : Zhang Xiuyu
-LastEditTime : 2024-08-20 09:18:23
+LastEditTime : 2024-08-20 11:21:44
 '''
 import argparse
 import os
@@ -83,73 +83,76 @@ def train_model(
     for epoch in range(1, epochs + 1):
         model.train()
         epoch_loss = 0
-        with tqdm(total=n_train, desc=f'Epoch {epoch}/{epochs}', unit='img') as pbar:
-            for batch in train_loader:
-                images, gts = batch['image'], batch['gt']
+        pbar = tqdm(total=n_train, desc=f'Epoch {epoch}/{epochs}', unit='img')
+        for batch in train_loader:
+            images, gts = batch['image'], batch['gt']
 
-                assert images.shape[1] == model.n_channels, \
-                    f'Network has been defined with {model.n_channels} input channels, ' \
-                    f'but loaded images have {images.shape[1]} channels. Please check that ' \
-                    'the images are loaded correctly.'
+            assert images.shape[1] == model.n_channels, \
+                f'Network has been defined with {model.n_channels} input channels, ' \
+                f'but loaded images have {images.shape[1]} channels. Please check that ' \
+                'the images are loaded correctly.'
 
-                images = images.to(device=device, dtype=torch.float32, memory_format=torch.channels_last)
-                gts = gts.to(device=device, dtype=torch.float32)
+            images = images.to(device=device, dtype=torch.float32, memory_format=torch.channels_last)
+            gts = gts.to(device=device, dtype=torch.float32)
 
-                with torch.autocast(device.type if device.type != 'mps' else 'cpu', enabled=mix_flag):
-                    preds = model(images)
-                    loss = loss_executer(preds, gts)
+            with torch.autocast(device.type if device.type != 'mps' else 'cpu', enabled=mix_flag):
+                preds = model(images)
+                loss = loss_executer(preds, gts)
 
-                optimizer.zero_grad(set_to_none=True)
-                grad_scaler.scale(loss).backward()
-                grad_scaler.unscale_(optimizer)
-                torch.nn.utils.clip_grad_norm_(model.parameters(), gradient_clipping)
-                grad_scaler.step(optimizer)
-                grad_scaler.update()
+            optimizer.zero_grad(set_to_none=True)
+            grad_scaler.scale(loss).backward()
+            grad_scaler.unscale_(optimizer)
+            torch.nn.utils.clip_grad_norm_(model.parameters(), gradient_clipping)
+            grad_scaler.step(optimizer)
+            grad_scaler.update()
 
-                pbar.update(images.shape[0])
-                global_step += 1
-                epoch_loss += loss.item()
-                experiment.log({
-                    'train loss': loss.item(),
-                    'step': global_step,
-                    'epoch': epoch
-                })
-                pbar.set_postfix(**{'loss (batch)': loss.item()})
+            pbar.update(images.shape[0])
+            global_step += 1
+            epoch_loss += loss.item()
+            experiment.log({
+                'train loss': loss.item(),
+                'step': global_step,
+                'epoch': epoch
+            })
+            pbar.set_postfix(**{'loss (batch)': loss.item()})
+            # Evaluation round
+            log_step = n_train // (10 * batch_size)
+            if log_step > 0:
+                if global_step % log_step == 0:
+                    print(f'\r{pbar}', end='', flush=True)
+            val_step = n_train // batch_size
+            if val_step > 0:
+                if global_step % val_step == 0:
+                    histograms = {}
+                    for tag, value in model.named_parameters():
+                        tag = tag.replace('/', '.')
+                        if not (torch.isinf(value) | torch.isnan(value)).any():
+                            histograms['Weights/' + tag] = wandb.Histogram(value.data.cpu())
+                        if value.grad is not None:  # 先检查梯度是否为 None
+                            if not (torch.isinf(value.grad) | torch.isnan(value.grad)).any():
+                                histograms['Gradients/' + tag] = wandb.Histogram(value.grad.data.cpu())
+                        else:
+                            print(f"\rParameter {tag} has no gradient.")
 
-                # Evaluation round
-                division_step = n_train // batch_size
-                if division_step > 0:
-                    if global_step % division_step == 0:
-                        histograms = {}
-                        for tag, value in model.named_parameters():
-                            tag = tag.replace('/', '.')
-                            if not (torch.isinf(value) | torch.isnan(value)).any():
-                                histograms['Weights/' + tag] = wandb.Histogram(value.data.cpu())
-                            if value.grad is not None:  # 先检查梯度是否为 None
-                                if not (torch.isinf(value.grad) | torch.isnan(value.grad)).any():
-                                    histograms['Gradients/' + tag] = wandb.Histogram(value.grad.data.cpu())
-                            else:
-                                print(f"Parameter {tag} has no gradient.")
+                    val_score = evaluate(model, val_loader, device, mix_flag)
+                    scheduler.step(val_score)
 
-                        val_score = evaluate(model, val_loader, device, mix_flag)
-                        scheduler.step(val_score)
-
-                        print('Validation PSNR score: {}'.format(val_score))
-                        try:
-                            experiment.log({
-                                'learning rate': optimizer.param_groups[0]['lr'],
-                                'validation PSNR': val_score,
-                                'images': wandb.Image(images[0].cpu()),
-                                'masks': {
-                                    'true': wandb.Image(gts[0].float().cpu()),
-                                    'pred': wandb.Image(preds.argmax(dim=1)[0].float().cpu()),
-                                },
-                                'step': global_step,
-                                'epoch': epoch,
-                                **histograms
-                            })
-                        except:
-                            pass
+                    print(f'Validation PSNR score: {val_score}')
+                    try:
+                        experiment.log({
+                            'learning rate': optimizer.param_groups[0]['lr'],
+                            'validation PSNR': val_score,
+                            'images': wandb.Image(images[0].cpu()),
+                            'masks': {
+                                'true': wandb.Image(gts[0].float().cpu()),
+                                'pred': wandb.Image(preds.argmax(dim=1)[0].float().cpu()),
+                            },
+                            'step': global_step,
+                            'epoch': epoch,
+                            **histograms
+                        })
+                    except:
+                        pass
 
         if save_checkpoint:
             Path(dir_checkpoint).mkdir(parents=True, exist_ok=True)

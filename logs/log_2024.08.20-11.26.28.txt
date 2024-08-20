@@ -1,0 +1,416 @@
+Using device cuda
+Network:
+	3 images channels
+	Bilinear upscaling
+Creating dataset with 1467 examples
+Starting training:
+        Epochs:            40
+        Batch size:        2
+        Learning rate:     1e-05
+        Training size:     1321
+        Validation size:   146
+        Checkpoints:       True
+        Device:            cuda
+        mix precision:     True
+        Hybrid loss alpha: 0.84
+    
+Epoch 1/40:  10%|██▌                       | 132/1321 [00:45<05:40,  3.50img/s, loss (batch)=0.0764]Epoch 1/40:  20%|█████▏                    | 264/1321 [01:26<05:44,  3.07img/s, loss (batch)=0.0474]Epoch 1/40:  30%|███████▊                  | 396/1321 [02:08<04:49,  3.20img/s, loss (batch)=0.0382]Epoch 1/40:  40%|██████████▍               | 528/1321 [02:50<04:24,  3.00img/s, loss (batch)=0.0539]Epoch 1/40:  50%|████████████▉             | 660/1321 [03:32<03:30,  3.14img/s, loss (batch)=0.0313]Epoch 1/40:  60%|███████████████▌          | 792/1321 [04:14<02:56,  2.99img/s, loss (batch)=0.0403]Epoch 1/40:  70%|██████████████████▏       | 924/1321 [04:56<02:09,  3.07img/s, loss (batch)=0.0353]Epoch 1/40:  80%|████████████████████▊     | 1056/1321 [05:38<01:27,  3.03img/s, loss (batch)=0.117]Epoch 1/40:  90%|██████████████████████▍  | 1188/1321 [06:20<00:44,  2.99img/s, loss (batch)=0.0336]Epoch 1/40: 100%|████████████████████████▉| 1320/1321 [07:01<00:00,  3.04img/s, loss (batch)=0.0252]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 10.892509460449219
+Checkpoint 1 saved!
+Epoch 2/40:  10%|██▌                       | 130/1321 [00:41<05:57,  3.33img/s, loss (batch)=0.0305]Epoch 2/40:  20%|█████▏                    | 262/1321 [01:22<05:49,  3.03img/s, loss (batch)=0.0486]Epoch 2/40:  30%|███████▊                  | 394/1321 [02:05<04:56,  3.12img/s, loss (batch)=0.0355]Epoch 2/40:  40%|██████████▎               | 526/1321 [02:45<03:50,  3.45img/s, loss (batch)=0.0536]Epoch 2/40:  50%|████████████▉             | 658/1321 [03:27<03:28,  3.18img/s, loss (batch)=0.0487]Epoch 2/40:  60%|███████████████▌          | 790/1321 [04:08<02:33,  3.45img/s, loss (batch)=0.0328]Epoch 2/40:  70%|██████████████████▏       | 922/1321 [04:49<02:05,  3.18img/s, loss (batch)=0.0449]Epoch 2/40:  80%|███████████████████▉     | 1054/1321 [05:29<01:26,  3.07img/s, loss (batch)=0.0261]Epoch 2/40:  90%|███████████████████████▎  | 1186/1321 [06:09<00:41,  3.25img/s, loss (batch)=0.088]Epoch 2/40: 100%|████████████████████████▉| 1318/1321 [06:49<00:00,  3.11img/s, loss (batch)=0.0296]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 10.927492141723633
+Checkpoint 2 saved!
+Epoch 3/40:  10%|██▌                       | 128/1321 [00:41<05:44,  3.46img/s, loss (batch)=0.0704]Epoch 3/40:  20%|█████▎                     | 260/1321 [01:22<05:53,  3.00img/s, loss (batch)=0.029]Epoch 3/40:  30%|███████▋                  | 392/1321 [02:05<04:53,  3.17img/s, loss (batch)=0.0443]Epoch 3/40:  40%|██████████▋                | 524/1321 [02:47<04:24,  3.01img/s, loss (batch)=0.027]Epoch 3/40:  50%|████████████▉             | 656/1321 [03:27<03:26,  3.22img/s, loss (batch)=0.0287]Epoch 3/40:  60%|████████████████           | 788/1321 [04:09<02:48,  3.16img/s, loss (batch)=0.027]Epoch 3/40:  70%|██████████████████        | 920/1321 [04:50<01:54,  3.51img/s, loss (batch)=0.0404]Epoch 3/40:  80%|███████████████████▉     | 1052/1321 [05:30<01:22,  3.27img/s, loss (batch)=0.0257]Epoch 3/40:  90%|██████████████████████▍  | 1184/1321 [06:10<00:41,  3.31img/s, loss (batch)=0.0281]Epoch 3/40: 100%|████████████████████████▉| 1316/1321 [06:50<00:01,  3.19img/s, loss (batch)=0.0241]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 10.928314208984375
+Checkpoint 3 saved!
+Epoch 4/40:  10%|██▍                       | 126/1321 [00:40<05:45,  3.46img/s, loss (batch)=0.0271]Epoch 4/40:  20%|█████                     | 258/1321 [01:22<05:53,  3.01img/s, loss (batch)=0.0722]Epoch 4/40:  30%|███████▋                  | 390/1321 [02:03<04:33,  3.41img/s, loss (batch)=0.0393]Epoch 4/40:  40%|██████████▎               | 522/1321 [02:45<04:25,  3.01img/s, loss (batch)=0.0293]Epoch 4/40:  50%|████████████▊             | 654/1321 [03:26<03:17,  3.38img/s, loss (batch)=0.0396]Epoch 4/40:  60%|███████████████▍          | 786/1321 [04:08<02:32,  3.51img/s, loss (batch)=0.0268]Epoch 4/40:  69%|██████████████████        | 918/1321 [04:49<02:07,  3.16img/s, loss (batch)=0.0859]Epoch 4/40:  79%|███████████████████▊     | 1050/1321 [05:29<01:19,  3.42img/s, loss (batch)=0.0325]Epoch 4/40:  89%|██████████████████████▎  | 1182/1321 [06:08<00:42,  3.28img/s, loss (batch)=0.0381]Epoch 4/40:  99%|████████████████████████▊| 1314/1321 [06:49<00:02,  3.43img/s, loss (batch)=0.0266]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 10.847887992858887
+Checkpoint 4 saved!
+Epoch 5/40:   9%|██▍                       | 124/1321 [00:40<05:52,  3.40img/s, loss (batch)=0.0372]Epoch 5/40:  19%|█████                     | 256/1321 [01:21<05:53,  3.01img/s, loss (batch)=0.0357]Epoch 5/40:  29%|███████▋                  | 388/1321 [02:02<04:50,  3.21img/s, loss (batch)=0.0371]Epoch 5/40:  39%|██████████▏               | 520/1321 [02:43<04:04,  3.28img/s, loss (batch)=0.0359]Epoch 5/40:  49%|████████████▊             | 652/1321 [03:24<03:20,  3.33img/s, loss (batch)=0.0427]Epoch 5/40:  59%|███████████████▍          | 784/1321 [04:05<02:39,  3.36img/s, loss (batch)=0.0405]Epoch 5/40:  69%|██████████████████        | 916/1321 [04:45<01:55,  3.50img/s, loss (batch)=0.0312]Epoch 5/40:  79%|███████████████████▊     | 1048/1321 [05:25<01:18,  3.49img/s, loss (batch)=0.0385]Epoch 5/40:  89%|██████████████████████▎  | 1180/1321 [06:05<00:40,  3.52img/s, loss (batch)=0.0493]Epoch 5/40:  99%|████████████████████████▊| 1312/1321 [06:44<00:02,  3.25img/s, loss (batch)=0.0401]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 10.850882530212402
+Checkpoint 5 saved!
+Epoch 6/40:   9%|██▍                       | 122/1321 [00:39<05:43,  3.49img/s, loss (batch)=0.0509]Epoch 6/40:  19%|████▉                     | 254/1321 [01:19<05:12,  3.42img/s, loss (batch)=0.0467]Epoch 6/40:  29%|███████▉                   | 386/1321 [02:01<05:02,  3.10img/s, loss (batch)=0.035]Epoch 6/40:  39%|██████████▏               | 518/1321 [02:42<03:48,  3.52img/s, loss (batch)=0.0404]Epoch 6/40:  49%|████████████▊             | 650/1321 [03:21<03:27,  3.23img/s, loss (batch)=0.0739]Epoch 6/40:  59%|███████████████▍          | 782/1321 [04:01<02:57,  3.04img/s, loss (batch)=0.0367]Epoch 6/40:  69%|█████████████████▉        | 914/1321 [04:40<01:56,  3.50img/s, loss (batch)=0.0329]Epoch 6/40:  79%|███████████████████▊     | 1046/1321 [05:19<01:17,  3.56img/s, loss (batch)=0.0351]Epoch 6/40:  89%|██████████████████████▎  | 1178/1321 [05:57<00:43,  3.25img/s, loss (batch)=0.0397]Epoch 6/40:  99%|████████████████████████▊| 1310/1321 [06:36<00:03,  3.30img/s, loss (batch)=0.0421]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 10.827524185180664
+Checkpoint 6 saved!
+Epoch 7/40:   9%|██▎                       | 120/1321 [00:38<05:38,  3.55img/s, loss (batch)=0.0485]Epoch 7/40:  19%|█████▏                     | 252/1321 [01:17<05:38,  3.16img/s, loss (batch)=0.034]Epoch 7/40:  29%|███████▌                  | 384/1321 [01:58<05:03,  3.09img/s, loss (batch)=0.0412]Epoch 7/40:  39%|██████████▏               | 516/1321 [02:38<03:58,  3.38img/s, loss (batch)=0.0713]Epoch 7/40:  49%|████████████▊             | 648/1321 [03:18<03:21,  3.34img/s, loss (batch)=0.0376]Epoch 7/40:  59%|███████████████▎          | 780/1321 [03:57<02:41,  3.36img/s, loss (batch)=0.0343]Epoch 7/40:  69%|█████████████████▉        | 912/1321 [04:36<01:58,  3.45img/s, loss (batch)=0.0305]Epoch 7/40:  79%|███████████████████▊     | 1044/1321 [05:15<01:19,  3.47img/s, loss (batch)=0.0332]Epoch 7/40:  89%|██████████████████████▎  | 1176/1321 [05:53<00:42,  3.39img/s, loss (batch)=0.0349]Epoch 7/40:  99%|████████████████████████▊| 1308/1321 [06:32<00:03,  3.50img/s, loss (batch)=0.0301]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 10.926186561584473
+Checkpoint 7 saved!
+Epoch 8/40:   9%|██▎                       | 118/1321 [00:39<06:15,  3.20img/s, loss (batch)=0.0261]Epoch 8/40:  19%|████▉                     | 250/1321 [01:20<05:40,  3.15img/s, loss (batch)=0.0305]Epoch 8/40:  29%|███████▌                  | 382/1321 [02:01<04:57,  3.16img/s, loss (batch)=0.0507]Epoch 8/40:  39%|██████████                | 514/1321 [02:43<04:16,  3.15img/s, loss (batch)=0.0875]Epoch 8/40:  49%|████████████▋             | 646/1321 [03:24<03:14,  3.46img/s, loss (batch)=0.0319]Epoch 8/40:  59%|███████████████▎          | 778/1321 [04:02<02:33,  3.54img/s, loss (batch)=0.0265]Epoch 8/40:  69%|█████████████████▉        | 910/1321 [04:39<01:54,  3.58img/s, loss (batch)=0.0305]Epoch 8/40:  79%|███████████████████▋     | 1042/1321 [05:16<01:17,  3.58img/s, loss (batch)=0.0279]Epoch 8/40:  89%|██████████████████████▏  | 1174/1321 [05:53<00:40,  3.60img/s, loss (batch)=0.0366]Epoch 8/40:  99%|████████████████████████▋| 1306/1321 [06:30<00:04,  3.59img/s, loss (batch)=0.0484]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 10.70981502532959
+Checkpoint 8 saved!
+Epoch 9/40:   9%|██▎                       | 116/1321 [00:36<05:36,  3.58img/s, loss (batch)=0.0313]Epoch 9/40:  19%|████▉                     | 248/1321 [01:13<05:05,  3.52img/s, loss (batch)=0.0462]Epoch 9/40:  29%|███████▍                  | 380/1321 [01:51<04:26,  3.53img/s, loss (batch)=0.0421]Epoch 9/40:  39%|██████████                | 512/1321 [02:28<03:48,  3.54img/s, loss (batch)=0.0384]Epoch 9/40:  49%|████████████▋             | 644/1321 [03:05<03:10,  3.55img/s, loss (batch)=0.0312]Epoch 9/40:  59%|███████████████▎          | 776/1321 [03:42<02:33,  3.56img/s, loss (batch)=0.0295]Epoch 9/40:  69%|█████████████████▊        | 908/1321 [04:19<01:55,  3.58img/s, loss (batch)=0.0311]Epoch 9/40:  79%|███████████████████▋     | 1040/1321 [04:56<01:18,  3.60img/s, loss (batch)=0.0291]Epoch 9/40:  89%|██████████████████████▏  | 1172/1321 [05:33<00:41,  3.57img/s, loss (batch)=0.0389]Epoch 9/40:  99%|████████████████████████▋| 1304/1321 [06:10<00:04,  3.60img/s, loss (batch)=0.0449]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 10.810346603393555
+Checkpoint 9 saved!
+Epoch 10/40:   9%|██▏                      | 114/1321 [00:35<05:34,  3.60img/s, loss (batch)=0.0285]Epoch 10/40:  19%|████▋                    | 246/1321 [01:12<05:05,  3.52img/s, loss (batch)=0.0349]Epoch 10/40:  29%|███████▏                 | 378/1321 [01:49<04:26,  3.54img/s, loss (batch)=0.0343]Epoch 10/40:  39%|█████████▋               | 510/1321 [02:27<03:47,  3.56img/s, loss (batch)=0.0338]Epoch 10/40:  49%|████████████▏            | 642/1321 [03:04<03:11,  3.55img/s, loss (batch)=0.0269]Epoch 10/40:  59%|██████████████▋          | 774/1321 [03:41<02:32,  3.58img/s, loss (batch)=0.0315]Epoch 10/40:  69%|█████████████████▏       | 906/1321 [04:18<01:55,  3.59img/s, loss (batch)=0.0287]Epoch 10/40:  79%|██████████████████▊     | 1038/1321 [04:54<01:18,  3.61img/s, loss (batch)=0.0293]Epoch 10/40:  89%|█████████████████████▎  | 1170/1321 [05:31<00:41,  3.62img/s, loss (batch)=0.0389]Epoch 10/40:  99%|████████████████████████▋| 1302/1321 [06:08<00:05,  3.59img/s, loss (batch)=0.039]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 10.901339530944824
+Checkpoint 10 saved!
+Epoch 11/40:   8%|██                       | 112/1321 [00:35<05:35,  3.60img/s, loss (batch)=0.0312]Epoch 11/40:  18%|████▌                    | 244/1321 [01:12<05:05,  3.53img/s, loss (batch)=0.0303]Epoch 11/40:  28%|███████                  | 376/1321 [01:49<04:28,  3.51img/s, loss (batch)=0.0361]Epoch 11/40:  38%|█████████▌               | 508/1321 [02:27<03:50,  3.53img/s, loss (batch)=0.0328]Epoch 11/40:  48%|████████████             | 640/1321 [03:04<03:11,  3.55img/s, loss (batch)=0.0343]Epoch 11/40:  58%|███████████████▏          | 772/1321 [03:41<02:33,  3.57img/s, loss (batch)=0.029]Epoch 11/40:  68%|█████████████████        | 904/1321 [04:18<01:56,  3.59img/s, loss (batch)=0.0302]Epoch 11/40:  78%|██████████████████▊     | 1036/1321 [04:54<01:19,  3.61img/s, loss (batch)=0.0304]Epoch 11/40:  88%|█████████████████████▏  | 1168/1321 [05:31<00:42,  3.59img/s, loss (batch)=0.0295]Epoch 11/40:  98%|███████████████████████▌| 1300/1321 [06:08<00:05,  3.59img/s, loss (batch)=0.0279]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 11.012300491333008
+Checkpoint 11 saved!
+Epoch 12/40:   8%|██                       | 110/1321 [00:34<05:35,  3.61img/s, loss (batch)=0.0267]Epoch 12/40:  18%|████▌                    | 242/1321 [01:11<05:05,  3.53img/s, loss (batch)=0.0316]Epoch 12/40:  28%|███████                  | 374/1321 [01:48<04:29,  3.51img/s, loss (batch)=0.0269]Epoch 12/40:  38%|█████████▌               | 506/1321 [02:26<03:49,  3.55img/s, loss (batch)=0.0297]Epoch 12/40:  48%|████████████             | 638/1321 [03:03<03:12,  3.54img/s, loss (batch)=0.0282]Epoch 12/40:  58%|██████████████▌          | 770/1321 [03:40<02:33,  3.59img/s, loss (batch)=0.0323]Epoch 12/40:  68%|█████████████████        | 902/1321 [04:17<01:55,  3.62img/s, loss (batch)=0.0286]Epoch 12/40:  78%|██████████████████▊     | 1034/1321 [04:53<01:20,  3.58img/s, loss (batch)=0.0281]Epoch 12/40:  88%|█████████████████████▏  | 1166/1321 [05:30<00:43,  3.58img/s, loss (batch)=0.0265]Epoch 12/40:  98%|███████████████████████▌| 1298/1321 [06:07<00:06,  3.59img/s, loss (batch)=0.0376]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 10.931185722351074
+Checkpoint 12 saved!
+Epoch 13/40:   8%|██                       | 108/1321 [00:33<05:37,  3.60img/s, loss (batch)=0.0294]Epoch 13/40:  18%|████▌                    | 240/1321 [01:11<05:07,  3.52img/s, loss (batch)=0.0293]Epoch 13/40:  28%|███████                  | 372/1321 [01:48<04:30,  3.50img/s, loss (batch)=0.0284]Epoch 13/40:  38%|█████████▌               | 504/1321 [02:26<03:52,  3.52img/s, loss (batch)=0.0268]Epoch 13/40:  48%|████████████             | 636/1321 [03:03<03:13,  3.54img/s, loss (batch)=0.0277]Epoch 13/40:  58%|██████████████▌          | 768/1321 [03:40<02:35,  3.55img/s, loss (batch)=0.0259]Epoch 13/40:  68%|█████████████████        | 900/1321 [04:18<01:58,  3.55img/s, loss (batch)=0.0343]Epoch 13/40:  78%|██████████████████▋     | 1032/1321 [04:55<01:20,  3.57img/s, loss (batch)=0.0263]Epoch 13/40:  88%|█████████████████████▏  | 1164/1321 [05:31<00:43,  3.60img/s, loss (batch)=0.0367]Epoch 13/40:  98%|███████████████████████▌| 1296/1321 [06:08<00:07,  3.56img/s, loss (batch)=0.0272]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 10.946969985961914
+Checkpoint 13 saved!
+Epoch 14/40:   8%|██                       | 106/1321 [00:34<05:33,  3.64img/s, loss (batch)=0.0284]Epoch 14/40:  18%|████▌                    | 238/1321 [01:11<05:12,  3.47img/s, loss (batch)=0.0339]Epoch 14/40:  28%|███████                  | 370/1321 [01:49<04:33,  3.48img/s, loss (batch)=0.0288]Epoch 14/40:  38%|█████████▌               | 502/1321 [02:26<03:52,  3.52img/s, loss (batch)=0.0322]Epoch 14/40:  48%|███████████▉             | 634/1321 [03:04<03:13,  3.55img/s, loss (batch)=0.0332]Epoch 14/40:  58%|██████████████▍          | 766/1321 [03:41<02:35,  3.56img/s, loss (batch)=0.0268]Epoch 14/40:  68%|████████████████▉        | 898/1321 [04:18<01:58,  3.57img/s, loss (batch)=0.0404]Epoch 14/40:  78%|██████████████████▋     | 1030/1321 [04:55<01:21,  3.56img/s, loss (batch)=0.0273]Epoch 14/40:  88%|█████████████████████   | 1162/1321 [05:32<00:44,  3.57img/s, loss (batch)=0.0374]Epoch 14/40:  98%|███████████████████████▌| 1294/1321 [06:10<00:08,  3.27img/s, loss (batch)=0.0276]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 10.974241256713867
+Checkpoint 14 saved!
+Epoch 15/40:   8%|█▉                       | 104/1321 [00:33<06:13,  3.26img/s, loss (batch)=0.0292]Epoch 15/40:  18%|████▍                    | 236/1321 [01:13<05:22,  3.36img/s, loss (batch)=0.0306]Epoch 15/40:  28%|██████▉                  | 368/1321 [01:54<05:06,  3.11img/s, loss (batch)=0.0215]Epoch 15/40:  38%|█████████▊                | 500/1321 [02:36<04:06,  3.33img/s, loss (batch)=0.027]Epoch 15/40:  48%|████████████▉              | 632/1321 [03:17<03:30,  3.27img/s, loss (batch)=0.03]Epoch 15/40:  58%|██████████████▍          | 764/1321 [03:57<02:50,  3.27img/s, loss (batch)=0.0296]Epoch 15/40:  68%|████████████████▉        | 896/1321 [04:37<02:08,  3.31img/s, loss (batch)=0.0282]Epoch 15/40:  78%|██████████████████▋     | 1028/1321 [05:16<01:28,  3.32img/s, loss (batch)=0.0269]Epoch 15/40:  88%|█████████████████████   | 1160/1321 [05:55<00:46,  3.48img/s, loss (batch)=0.0269]Epoch 15/40:  98%|███████████████████████▍| 1292/1321 [06:34<00:08,  3.48img/s, loss (batch)=0.0245]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 10.990009307861328
+Checkpoint 15 saved!
+Epoch 16/40:   8%|█▉                       | 102/1321 [00:34<06:01,  3.38img/s, loss (batch)=0.0271]Epoch 16/40:  18%|████▍                    | 234/1321 [01:13<05:35,  3.24img/s, loss (batch)=0.0245]Epoch 16/40:  28%|██████▉                  | 366/1321 [01:55<05:02,  3.16img/s, loss (batch)=0.0251]Epoch 16/40:  38%|█████████▍               | 498/1321 [02:35<03:57,  3.46img/s, loss (batch)=0.0316]Epoch 16/40:  48%|███████████▉             | 630/1321 [03:16<03:19,  3.46img/s, loss (batch)=0.0266]Epoch 16/40:  58%|██████████████▍          | 762/1321 [03:56<02:52,  3.23img/s, loss (batch)=0.0317]Epoch 16/40:  68%|████████████████▉        | 894/1321 [04:36<02:07,  3.34img/s, loss (batch)=0.0288]Epoch 16/40:  78%|██████████████████▋     | 1026/1321 [05:16<01:25,  3.43img/s, loss (batch)=0.0387]Epoch 16/40:  88%|█████████████████████   | 1158/1321 [05:54<00:46,  3.54img/s, loss (batch)=0.0298]Epoch 16/40:  98%|███████████████████████▍| 1290/1321 [06:33<00:09,  3.15img/s, loss (batch)=0.0388]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 10.966912269592285
+Checkpoint 16 saved!
+Epoch 17/40:   8%|█▉                       | 100/1321 [00:32<05:44,  3.55img/s, loss (batch)=0.0278]Epoch 17/40:  18%|████▍                    | 232/1321 [01:11<05:29,  3.31img/s, loss (batch)=0.0274]Epoch 17/40:  28%|██████▉                  | 364/1321 [01:52<05:13,  3.05img/s, loss (batch)=0.0276]Epoch 17/40:  38%|█████████▍               | 496/1321 [02:32<04:07,  3.33img/s, loss (batch)=0.0339]Epoch 17/40:  48%|███████████▉             | 628/1321 [03:12<03:33,  3.24img/s, loss (batch)=0.0255]Epoch 17/40:  58%|██████████████▉           | 760/1321 [03:51<02:54,  3.22img/s, loss (batch)=0.029]Epoch 17/40:  68%|█████████████████▌        | 892/1321 [04:31<02:07,  3.37img/s, loss (batch)=0.026]Epoch 17/40:  78%|██████████████████▌     | 1024/1321 [05:10<01:24,  3.52img/s, loss (batch)=0.0258]Epoch 17/40:  88%|█████████████████████   | 1156/1321 [05:49<00:51,  3.23img/s, loss (batch)=0.0272]Epoch 17/40:  98%|████████████████████████▍| 1288/1321 [06:28<00:09,  3.45img/s, loss (batch)=0.027]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 10.921660423278809
+Checkpoint 17 saved!
+Epoch 18/40:   7%|█▉                        | 98/1321 [00:33<06:04,  3.35img/s, loss (batch)=0.0296]Epoch 18/40:  17%|████▌                     | 230/1321 [01:13<05:40,  3.20img/s, loss (batch)=0.027]Epoch 18/40:  27%|██████▊                  | 362/1321 [01:54<04:58,  3.21img/s, loss (batch)=0.0341]Epoch 18/40:  37%|█████████▎               | 494/1321 [02:35<03:58,  3.46img/s, loss (batch)=0.0308]Epoch 18/40:  47%|███████████▊             | 626/1321 [03:16<03:25,  3.38img/s, loss (batch)=0.0269]Epoch 18/40:  57%|██████████████▉           | 758/1321 [03:56<03:07,  3.01img/s, loss (batch)=0.036]Epoch 18/40:  67%|████████████████▊        | 890/1321 [04:38<02:15,  3.19img/s, loss (batch)=0.0299]Epoch 18/40:  77%|██████████████████▌     | 1022/1321 [05:19<01:32,  3.22img/s, loss (batch)=0.0268]Epoch 18/40:  87%|████████████████████▉   | 1154/1321 [05:58<00:47,  3.50img/s, loss (batch)=0.0284]Epoch 18/40:  97%|███████████████████████▎| 1286/1321 [06:39<00:09,  3.53img/s, loss (batch)=0.0232]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 10.987398147583008
+Checkpoint 18 saved!
+Epoch 19/40:   7%|█▉                        | 96/1321 [00:32<06:25,  3.18img/s, loss (batch)=0.0298]Epoch 19/40:  17%|████▎                    | 228/1321 [01:13<06:03,  3.01img/s, loss (batch)=0.0296]Epoch 19/40:  27%|██████▊                  | 360/1321 [01:55<04:46,  3.36img/s, loss (batch)=0.0244]Epoch 19/40:  37%|█████████▎               | 492/1321 [02:36<04:26,  3.11img/s, loss (batch)=0.0304]Epoch 19/40:  47%|███████████▊             | 624/1321 [03:16<03:26,  3.37img/s, loss (batch)=0.0245]Epoch 19/40:  57%|██████████████▎          | 756/1321 [03:57<03:00,  3.14img/s, loss (batch)=0.0265]Epoch 19/40:  67%|████████████████▊        | 888/1321 [04:38<02:13,  3.24img/s, loss (batch)=0.0233]Epoch 19/40:  77%|██████████████████▌     | 1020/1321 [05:18<01:26,  3.47img/s, loss (batch)=0.0331]Epoch 19/40:  87%|████████████████████▉   | 1152/1321 [05:57<00:49,  3.39img/s, loss (batch)=0.0278]Epoch 19/40:  97%|███████████████████████▎| 1284/1321 [06:37<00:12,  3.05img/s, loss (batch)=0.0273]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 10.989750862121582
+Checkpoint 19 saved!
+Epoch 20/40:   7%|█▊                        | 94/1321 [00:31<06:18,  3.24img/s, loss (batch)=0.0274]Epoch 20/40:  17%|████▎                    | 226/1321 [01:11<05:25,  3.37img/s, loss (batch)=0.0262]Epoch 20/40:  27%|██████▊                  | 358/1321 [01:49<04:36,  3.48img/s, loss (batch)=0.0251]Epoch 20/40:  37%|█████████▋                | 490/1321 [02:27<03:56,  3.52img/s, loss (batch)=0.034]Epoch 20/40:  47%|███████████▊             | 622/1321 [03:04<03:17,  3.54img/s, loss (batch)=0.0264]Epoch 20/40:  57%|██████████████▎          | 754/1321 [03:41<02:39,  3.54img/s, loss (batch)=0.0252]Epoch 20/40:  67%|████████████████▊        | 886/1321 [04:19<02:02,  3.56img/s, loss (batch)=0.0341]Epoch 20/40:  77%|██████████████████▍     | 1018/1321 [04:55<01:24,  3.58img/s, loss (batch)=0.0298]Epoch 20/40:  87%|█████████████████████▊   | 1150/1321 [05:32<00:47,  3.59img/s, loss (batch)=0.024]Epoch 20/40:  97%|███████████████████████▎| 1282/1321 [06:09<00:10,  3.58img/s, loss (batch)=0.0225]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 11.027024269104004
+Checkpoint 20 saved!
+Epoch 21/40:   7%|█▊                        | 92/1321 [00:29<05:37,  3.64img/s, loss (batch)=0.0316]Epoch 21/40:  17%|████▏                    | 224/1321 [01:06<05:08,  3.56img/s, loss (batch)=0.0294]Epoch 21/40:  27%|██████▋                  | 356/1321 [01:43<04:33,  3.53img/s, loss (batch)=0.0267]Epoch 21/40:  37%|█████████▏               | 488/1321 [02:20<03:56,  3.53img/s, loss (batch)=0.0261]Epoch 21/40:  47%|███████████▋             | 620/1321 [02:57<03:17,  3.54img/s, loss (batch)=0.0315]Epoch 21/40:  57%|██████████████▏          | 752/1321 [03:35<02:39,  3.57img/s, loss (batch)=0.0243]Epoch 21/40:  67%|████████████████▋        | 884/1321 [04:11<02:02,  3.56img/s, loss (batch)=0.0413]Epoch 21/40:  77%|██████████████████▍     | 1016/1321 [04:48<01:24,  3.59img/s, loss (batch)=0.0277]Epoch 21/40:  87%|████████████████████▊   | 1148/1321 [05:25<00:48,  3.59img/s, loss (batch)=0.0218]Epoch 21/40:  97%|███████████████████████▎| 1280/1321 [06:02<00:11,  3.58img/s, loss (batch)=0.0211]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 10.991032600402832
+Checkpoint 21 saved!
+Epoch 22/40:   7%|█▊                        | 90/1321 [00:29<05:40,  3.61img/s, loss (batch)=0.0257]Epoch 22/40:  17%|████▏                    | 222/1321 [01:06<05:12,  3.52img/s, loss (batch)=0.0294]Epoch 22/40:  27%|██████▋                  | 354/1321 [01:43<04:36,  3.50img/s, loss (batch)=0.0248]Epoch 22/40:  37%|█████████▏               | 486/1321 [02:21<03:57,  3.52img/s, loss (batch)=0.0224]Epoch 22/40:  47%|███████████▋             | 618/1321 [02:58<03:18,  3.54img/s, loss (batch)=0.0269]Epoch 22/40:  57%|██████████████▏          | 750/1321 [03:35<02:41,  3.55img/s, loss (batch)=0.0265]Epoch 22/40:  67%|████████████████▋        | 882/1321 [04:12<02:02,  3.58img/s, loss (batch)=0.0226]Epoch 22/40:  77%|██████████████████▍     | 1014/1321 [04:49<01:25,  3.58img/s, loss (batch)=0.0264]Epoch 22/40:  87%|████████████████████▊   | 1146/1321 [05:26<00:48,  3.59img/s, loss (batch)=0.0291]Epoch 22/40:  97%|███████████████████████▏| 1278/1321 [06:03<00:11,  3.60img/s, loss (batch)=0.0251]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 11.059000015258789
+Checkpoint 22 saved!
+Epoch 23/40:   7%|█▋                        | 88/1321 [00:28<05:39,  3.63img/s, loss (batch)=0.0242]Epoch 23/40:  17%|████▏                    | 220/1321 [01:05<05:13,  3.51img/s, loss (batch)=0.0236]Epoch 23/40:  27%|██████▉                   | 352/1321 [01:43<04:37,  3.49img/s, loss (batch)=0.029]Epoch 23/40:  37%|█████████▏               | 484/1321 [02:20<03:58,  3.52img/s, loss (batch)=0.0343]Epoch 23/40:  47%|███████████▋             | 616/1321 [02:58<03:19,  3.54img/s, loss (batch)=0.0555]Epoch 23/40:  57%|██████████████▏          | 748/1321 [03:35<02:40,  3.57img/s, loss (batch)=0.0243]Epoch 23/40:  67%|████████████████▋        | 880/1321 [04:12<02:03,  3.58img/s, loss (batch)=0.0268]Epoch 23/40:  77%|██████████████████▍     | 1012/1321 [04:49<01:26,  3.59img/s, loss (batch)=0.0262]Epoch 23/40:  87%|████████████████████▊   | 1144/1321 [05:26<00:49,  3.58img/s, loss (batch)=0.0223]Epoch 23/40:  97%|███████████████████████▏| 1276/1321 [06:03<00:12,  3.59img/s, loss (batch)=0.0279]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 11.034584045410156
+Checkpoint 23 saved!
+Epoch 24/40:   7%|█▋                        | 86/1321 [00:29<05:41,  3.62img/s, loss (batch)=0.0241]Epoch 24/40:  17%|████▏                    | 218/1321 [01:06<05:16,  3.49img/s, loss (batch)=0.0265]Epoch 24/40:  26%|██████▉                   | 350/1321 [01:44<04:39,  3.47img/s, loss (batch)=0.024]Epoch 24/40:  36%|█████████                | 482/1321 [02:22<03:58,  3.51img/s, loss (batch)=0.0331]Epoch 24/40:  46%|███████████▌             | 614/1321 [02:59<03:20,  3.53img/s, loss (batch)=0.0256]Epoch 24/40:  56%|██████████████           | 746/1321 [03:36<02:41,  3.56img/s, loss (batch)=0.0278]Epoch 24/40:  66%|████████████████▌        | 878/1321 [04:14<02:04,  3.57img/s, loss (batch)=0.0349]Epoch 24/40:  76%|███████████████████      | 1010/1321 [04:50<01:26,  3.59img/s, loss (batch)=0.041]Epoch 24/40:  86%|████████████████████▋   | 1142/1321 [05:27<00:50,  3.58img/s, loss (batch)=0.0242]Epoch 24/40:  96%|███████████████████████▏| 1274/1321 [06:04<00:13,  3.59img/s, loss (batch)=0.0387]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 11.040613174438477
+Checkpoint 24 saved!
+Epoch 25/40:   6%|█▋                         | 84/1321 [00:28<05:40,  3.64img/s, loss (batch)=0.026]Epoch 25/40:  16%|████                     | 216/1321 [01:06<05:18,  3.47img/s, loss (batch)=0.0252]Epoch 25/40:  26%|██████▌                  | 348/1321 [01:44<04:41,  3.45img/s, loss (batch)=0.0278]Epoch 25/40:  36%|█████████                | 480/1321 [02:22<04:00,  3.50img/s, loss (batch)=0.0395]Epoch 25/40:  46%|███████████▌             | 612/1321 [02:59<03:21,  3.51img/s, loss (batch)=0.0254]Epoch 25/40:  56%|██████████████           | 744/1321 [03:36<02:44,  3.50img/s, loss (batch)=0.0324]Epoch 25/40:  66%|████████████████▌        | 876/1321 [04:17<02:16,  3.26img/s, loss (batch)=0.0392]Epoch 25/40:  76%|██████████████████▎     | 1008/1321 [04:57<01:31,  3.40img/s, loss (batch)=0.0252]Epoch 25/40:  86%|████████████████████▋   | 1140/1321 [05:36<00:55,  3.26img/s, loss (batch)=0.0231]Epoch 25/40:  96%|███████████████████████ | 1272/1321 [06:16<00:15,  3.24img/s, loss (batch)=0.0249]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 10.9975004196167
+Checkpoint 25 saved!
+Epoch 26/40:   6%|█▌                        | 82/1321 [00:29<06:02,  3.42img/s, loss (batch)=0.0326]Epoch 26/40:  16%|████                     | 214/1321 [01:08<05:40,  3.25img/s, loss (batch)=0.0298]Epoch 26/40:  26%|██████▌                  | 346/1321 [01:49<05:17,  3.07img/s, loss (batch)=0.0337]Epoch 26/40:  36%|█████████                | 478/1321 [02:30<04:26,  3.16img/s, loss (batch)=0.0256]Epoch 26/40:  46%|███████████▌             | 610/1321 [03:11<03:51,  3.06img/s, loss (batch)=0.0261]Epoch 26/40:  56%|██████████████           | 742/1321 [03:52<03:02,  3.18img/s, loss (batch)=0.0346]Epoch 26/40:  66%|████████████████▌        | 874/1321 [04:32<02:25,  3.07img/s, loss (batch)=0.0259]Epoch 26/40:  76%|██████████████████▎     | 1006/1321 [05:11<01:36,  3.27img/s, loss (batch)=0.0244]Epoch 26/40:  86%|████████████████████▋   | 1138/1321 [05:51<00:54,  3.37img/s, loss (batch)=0.0248]Epoch 26/40:  96%|███████████████████████ | 1270/1321 [06:30<00:15,  3.30img/s, loss (batch)=0.0403]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 11.055948257446289
+Checkpoint 26 saved!
+Epoch 27/40:   6%|█▌                        | 80/1321 [00:28<06:26,  3.21img/s, loss (batch)=0.0249]Epoch 27/40:  16%|████                     | 212/1321 [01:08<05:38,  3.28img/s, loss (batch)=0.0295]Epoch 27/40:  26%|██████▌                  | 344/1321 [01:48<05:08,  3.16img/s, loss (batch)=0.0485]Epoch 27/40:  36%|█████████                | 476/1321 [02:29<04:13,  3.33img/s, loss (batch)=0.0272]Epoch 27/40:  46%|███████████▌             | 608/1321 [03:10<03:46,  3.15img/s, loss (batch)=0.0278]Epoch 27/40:  56%|██████████████           | 740/1321 [03:50<03:03,  3.17img/s, loss (batch)=0.0259]Epoch 27/40:  66%|████████████████▌        | 872/1321 [04:30<02:10,  3.45img/s, loss (batch)=0.0248]Epoch 27/40:  76%|███████████████████      | 1004/1321 [05:11<01:34,  3.34img/s, loss (batch)=0.036]Epoch 27/40:  86%|████████████████████▋   | 1136/1321 [05:51<00:58,  3.19img/s, loss (batch)=0.0225]Epoch 27/40:  96%|███████████████████████▉ | 1268/1321 [06:30<00:15,  3.36img/s, loss (batch)=0.028]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 11.042457580566406
+Checkpoint 27 saved!
+Epoch 28/40:   6%|█▌                        | 78/1321 [00:27<05:55,  3.49img/s, loss (batch)=0.0293]Epoch 28/40:  16%|███▉                     | 210/1321 [01:06<05:36,  3.31img/s, loss (batch)=0.0513]Epoch 28/40:  26%|██████▍                  | 342/1321 [01:48<05:11,  3.14img/s, loss (batch)=0.0223]Epoch 28/40:  36%|████████▉                | 474/1321 [02:30<04:16,  3.30img/s, loss (batch)=0.0369]Epoch 28/40:  46%|███████████▉              | 606/1321 [03:10<03:29,  3.42img/s, loss (batch)=0.027]Epoch 28/40:  56%|█████████████▉           | 738/1321 [03:50<02:46,  3.51img/s, loss (batch)=0.0312]Epoch 28/40:  66%|████████████████▍        | 870/1321 [04:31<02:22,  3.16img/s, loss (batch)=0.0284]Epoch 28/40:  76%|██████████████████▏     | 1002/1321 [05:11<01:42,  3.11img/s, loss (batch)=0.0311]Epoch 28/40:  86%|████████████████████▌   | 1134/1321 [05:50<00:53,  3.50img/s, loss (batch)=0.0245]Epoch 28/40:  96%|███████████████████████ | 1266/1321 [06:30<00:15,  3.44img/s, loss (batch)=0.0232]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 10.928220748901367
+Checkpoint 28 saved!
+Epoch 29/40:   6%|█▍                        | 76/1321 [00:26<06:06,  3.40img/s, loss (batch)=0.0234]Epoch 29/40:  16%|███▉                     | 208/1321 [01:06<06:02,  3.07img/s, loss (batch)=0.0254]Epoch 29/40:  26%|██████▍                  | 340/1321 [01:48<05:24,  3.02img/s, loss (batch)=0.0454]Epoch 29/40:  36%|████████▉                | 472/1321 [02:30<04:38,  3.04img/s, loss (batch)=0.0322]Epoch 29/40:  46%|███████████▍             | 604/1321 [03:10<03:58,  3.00img/s, loss (batch)=0.0288]Epoch 29/40:  56%|█████████████▉           | 736/1321 [03:50<02:55,  3.34img/s, loss (batch)=0.0318]Epoch 29/40:  66%|████████████████▍        | 868/1321 [04:30<02:17,  3.30img/s, loss (batch)=0.0237]Epoch 29/40:  76%|██████████████████▏     | 1000/1321 [05:09<01:37,  3.29img/s, loss (batch)=0.0236]Epoch 29/40:  86%|████████████████████▌   | 1132/1321 [05:49<00:58,  3.22img/s, loss (batch)=0.0225]Epoch 29/40:  96%|██████████████████████▉ | 1264/1321 [06:28<00:17,  3.20img/s, loss (batch)=0.0231]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 11.020037651062012
+Checkpoint 29 saved!
+Epoch 30/40:   6%|█▍                        | 74/1321 [00:26<05:55,  3.51img/s, loss (batch)=0.0252]Epoch 30/40:  16%|███▉                     | 206/1321 [01:08<06:11,  3.00img/s, loss (batch)=0.0281]Epoch 30/40:  26%|██████▍                  | 338/1321 [01:49<04:58,  3.29img/s, loss (batch)=0.0292]Epoch 30/40:  36%|█████████▎                | 470/1321 [02:30<04:29,  3.16img/s, loss (batch)=0.028]Epoch 30/40:  46%|███████████▍             | 602/1321 [03:11<03:26,  3.48img/s, loss (batch)=0.0288]Epoch 30/40:  56%|█████████████▉           | 734/1321 [03:52<02:54,  3.36img/s, loss (batch)=0.0319]Epoch 30/40:  66%|████████████████▍        | 866/1321 [04:33<02:31,  3.00img/s, loss (batch)=0.0266]Epoch 30/40:  76%|██████████████████▉      | 998/1321 [05:13<01:31,  3.53img/s, loss (batch)=0.0276]Epoch 30/40:  86%|████████████████████▌   | 1130/1321 [05:50<00:53,  3.54img/s, loss (batch)=0.0235]Epoch 30/40:  96%|██████████████████████▉ | 1262/1321 [06:27<00:16,  3.55img/s, loss (batch)=0.0236]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 10.99940299987793
+Checkpoint 30 saved!
+Epoch 31/40:   5%|█▍                         | 72/1321 [00:25<05:42,  3.65img/s, loss (batch)=0.036]Epoch 31/40:  15%|████                      | 204/1321 [01:02<05:16,  3.52img/s, loss (batch)=0.111]Epoch 31/40:  25%|██████▎                  | 336/1321 [01:39<04:42,  3.49img/s, loss (batch)=0.0584]Epoch 31/40:  35%|████████▊                | 468/1321 [02:17<04:02,  3.52img/s, loss (batch)=0.0235]Epoch 31/40:  45%|███████████▎             | 600/1321 [02:54<03:23,  3.54img/s, loss (batch)=0.0271]Epoch 31/40:  55%|██████████████▍           | 732/1321 [03:32<02:45,  3.57img/s, loss (batch)=0.054]Epoch 31/40:  65%|████████████████▎        | 864/1321 [04:09<02:07,  3.59img/s, loss (batch)=0.0272]Epoch 31/40:  75%|██████████████████▊      | 996/1321 [04:46<01:31,  3.57img/s, loss (batch)=0.0238]Epoch 31/40:  85%|█████████████████████▎   | 1128/1321 [05:22<00:53,  3.61img/s, loss (batch)=0.027]Epoch 31/40:  95%|██████████████████████▉ | 1260/1321 [05:59<00:16,  3.61img/s, loss (batch)=0.0355]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 11.041351318359375
+Checkpoint 31 saved!
+Epoch 32/40:   5%|█▍                        | 70/1321 [00:25<05:40,  3.67img/s, loss (batch)=0.0313]Epoch 32/40:  15%|███▊                     | 202/1321 [01:02<05:19,  3.50img/s, loss (batch)=0.0257]Epoch 32/40:  25%|██████▎                  | 334/1321 [01:40<04:44,  3.47img/s, loss (batch)=0.0248]Epoch 32/40:  35%|████████▊                | 466/1321 [02:17<04:03,  3.51img/s, loss (batch)=0.0424]Epoch 32/40:  45%|███████████▎             | 598/1321 [02:55<03:24,  3.54img/s, loss (batch)=0.0222]Epoch 32/40:  55%|█████████████▊           | 730/1321 [03:32<02:45,  3.56img/s, loss (batch)=0.0389]Epoch 32/40:  65%|████████████████▎        | 862/1321 [04:09<02:08,  3.57img/s, loss (batch)=0.0261]Epoch 32/40:  75%|██████████████████▊      | 994/1321 [04:46<01:31,  3.59img/s, loss (batch)=0.0277]Epoch 32/40:  85%|████████████████████▍   | 1126/1321 [05:23<00:54,  3.58img/s, loss (batch)=0.0253]Epoch 32/40:  95%|███████████████████████▊ | 1258/1321 [05:59<00:17,  3.60img/s, loss (batch)=0.026]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 11.012788772583008
+Checkpoint 32 saved!
+Epoch 33/40:   5%|█▎                        | 68/1321 [00:23<05:42,  3.66img/s, loss (batch)=0.0287]Epoch 33/40:  15%|███▊                     | 200/1321 [01:00<05:17,  3.53img/s, loss (batch)=0.0594]Epoch 33/40:  25%|██████▌                   | 332/1321 [01:37<04:42,  3.50img/s, loss (batch)=0.028]Epoch 33/40:  35%|█████████▏                | 464/1321 [02:15<04:04,  3.50img/s, loss (batch)=0.026]Epoch 33/40:  45%|███████████▋              | 596/1321 [02:53<03:24,  3.54img/s, loss (batch)=0.031]Epoch 33/40:  55%|█████████████▊           | 728/1321 [03:30<02:46,  3.56img/s, loss (batch)=0.0277]Epoch 33/40:  65%|████████████████▎        | 860/1321 [04:07<02:09,  3.56img/s, loss (batch)=0.0342]Epoch 33/40:  75%|██████████████████▊      | 992/1321 [04:45<01:37,  3.38img/s, loss (batch)=0.0219]Epoch 33/40:  85%|█████████████████████▎   | 1124/1321 [05:24<01:02,  3.14img/s, loss (batch)=0.023]Epoch 33/40:  95%|██████████████████████▊ | 1256/1321 [06:03<00:19,  3.28img/s, loss (batch)=0.0293]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 11.02614688873291
+Checkpoint 33 saved!
+Epoch 34/40:   5%|█▎                        | 66/1321 [00:24<06:13,  3.36img/s, loss (batch)=0.0317]Epoch 34/40:  15%|███▋                     | 198/1321 [01:04<05:38,  3.32img/s, loss (batch)=0.0584]Epoch 34/40:  25%|██████▏                  | 330/1321 [01:45<05:13,  3.16img/s, loss (batch)=0.0293]Epoch 34/40:  35%|█████████                 | 462/1321 [02:26<04:35,  3.12img/s, loss (batch)=0.025]Epoch 34/40:  45%|███████████▏             | 594/1321 [03:06<04:01,  3.01img/s, loss (batch)=0.0273]Epoch 34/40:  55%|██████████████▎           | 726/1321 [03:46<03:03,  3.24img/s, loss (batch)=0.032]Epoch 34/40:  65%|████████████████▏        | 858/1321 [04:26<02:20,  3.29img/s, loss (batch)=0.0244]Epoch 34/40:  75%|██████████████████▋      | 990/1321 [05:05<01:36,  3.44img/s, loss (batch)=0.0261]Epoch 34/40:  85%|████████████████████▍   | 1122/1321 [05:45<00:57,  3.44img/s, loss (batch)=0.0481]Epoch 34/40:  95%|██████████████████████▊ | 1254/1321 [06:25<00:20,  3.19img/s, loss (batch)=0.0221]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 10.92833423614502
+Checkpoint 34 saved!
+Epoch 35/40:   5%|█▎                        | 64/1321 [00:23<05:55,  3.54img/s, loss (batch)=0.0268]Epoch 35/40:  15%|███▋                     | 196/1321 [01:04<05:58,  3.14img/s, loss (batch)=0.0316]Epoch 35/40:  25%|██████▏                  | 328/1321 [01:45<05:14,  3.16img/s, loss (batch)=0.0248]Epoch 35/40:  35%|████████▋                | 460/1321 [02:27<04:21,  3.29img/s, loss (batch)=0.0391]Epoch 35/40:  45%|███████████▏             | 592/1321 [03:09<03:49,  3.17img/s, loss (batch)=0.0237]Epoch 35/40:  55%|█████████████▋           | 724/1321 [03:48<02:50,  3.50img/s, loss (batch)=0.0242]Epoch 35/40:  65%|████████████████▏        | 856/1321 [04:29<02:35,  2.99img/s, loss (batch)=0.0456]Epoch 35/40:  75%|██████████████████▋      | 988/1321 [05:09<01:39,  3.36img/s, loss (batch)=0.0259]Epoch 35/40:  85%|█████████████████████▏   | 1120/1321 [05:48<01:03,  3.16img/s, loss (batch)=0.025]Epoch 35/40:  95%|██████████████████████▋ | 1252/1321 [06:27<00:20,  3.39img/s, loss (batch)=0.0266]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 11.020998001098633
+Checkpoint 35 saved!
+Epoch 36/40:   5%|█▏                        | 62/1321 [00:23<06:18,  3.33img/s, loss (batch)=0.0288]Epoch 36/40:  15%|███▋                     | 194/1321 [01:02<05:46,  3.25img/s, loss (batch)=0.0236]Epoch 36/40:  25%|██████▏                  | 326/1321 [01:41<04:47,  3.46img/s, loss (batch)=0.0278]Epoch 36/40:  35%|████████▋                | 458/1321 [02:19<04:06,  3.50img/s, loss (batch)=0.0286]Epoch 36/40:  45%|███████████▏             | 590/1321 [02:56<03:27,  3.53img/s, loss (batch)=0.0392]Epoch 36/40:  55%|█████████████▋           | 722/1321 [03:34<02:48,  3.55img/s, loss (batch)=0.0307]Epoch 36/40:  65%|████████████████▏        | 854/1321 [04:11<02:10,  3.57img/s, loss (batch)=0.0233]Epoch 36/40:  75%|██████████████████▋      | 986/1321 [04:48<01:33,  3.57img/s, loss (batch)=0.0237]Epoch 36/40:  85%|████████████████████▎   | 1118/1321 [05:25<00:56,  3.59img/s, loss (batch)=0.0277]Epoch 36/40:  95%|██████████████████████▋ | 1250/1321 [06:01<00:19,  3.60img/s, loss (batch)=0.0241]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 11.0386323928833
+Checkpoint 36 saved!
+Epoch 37/40:   5%|█▏                        | 60/1321 [00:21<05:45,  3.65img/s, loss (batch)=0.0222]Epoch 37/40:  15%|███▊                      | 192/1321 [00:58<05:19,  3.54img/s, loss (batch)=0.026]Epoch 37/40:  25%|██████▏                  | 324/1321 [01:35<04:46,  3.49img/s, loss (batch)=0.0335]Epoch 37/40:  35%|████████▋                | 456/1321 [02:13<04:06,  3.51img/s, loss (batch)=0.0371]Epoch 37/40:  45%|███████████▏             | 588/1321 [02:50<03:26,  3.54img/s, loss (batch)=0.0364]Epoch 37/40:  55%|█████████████▋           | 720/1321 [03:27<02:48,  3.56img/s, loss (batch)=0.0242]Epoch 37/40:  64%|████████████████         | 852/1321 [04:04<02:11,  3.56img/s, loss (batch)=0.0247]Epoch 37/40:  74%|██████████████████▌      | 984/1321 [04:41<01:34,  3.57img/s, loss (batch)=0.0217]Epoch 37/40:  84%|████████████████████▎   | 1116/1321 [05:18<00:57,  3.58img/s, loss (batch)=0.0294]Epoch 37/40:  94%|██████████████████████▋ | 1248/1321 [05:55<00:20,  3.58img/s, loss (batch)=0.0411]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 11.024362564086914
+Checkpoint 37 saved!
+Epoch 38/40:   4%|█▏                        | 58/1321 [00:20<05:45,  3.65img/s, loss (batch)=0.0226]Epoch 38/40:  14%|███▌                     | 190/1321 [00:57<05:23,  3.50img/s, loss (batch)=0.0229]Epoch 38/40:  24%|██████                   | 322/1321 [01:35<04:45,  3.49img/s, loss (batch)=0.0223]Epoch 38/40:  34%|████████▌                | 454/1321 [02:13<04:06,  3.52img/s, loss (batch)=0.0243]Epoch 38/40:  44%|███████████▌              | 586/1321 [02:50<03:26,  3.56img/s, loss (batch)=0.033]Epoch 38/40:  54%|█████████████▌           | 718/1321 [03:27<02:50,  3.54img/s, loss (batch)=0.0303]Epoch 38/40:  64%|████████████████         | 850/1321 [04:04<02:12,  3.57img/s, loss (batch)=0.0366]Epoch 38/40:  74%|██████████████████▌      | 982/1321 [04:41<01:34,  3.57img/s, loss (batch)=0.0235]Epoch 38/40:  84%|████████████████████▏   | 1114/1321 [05:18<00:57,  3.57img/s, loss (batch)=0.0465]Epoch 38/40:  94%|███████████████████████▌ | 1246/1321 [05:55<00:20,  3.59img/s, loss (batch)=0.023]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 11.021419525146484
+Checkpoint 38 saved!
+Epoch 39/40:   4%|█▏                         | 56/1321 [00:20<06:17,  3.35img/s, loss (batch)=0.026]Epoch 39/40:  14%|███▌                     | 188/1321 [01:00<05:29,  3.44img/s, loss (batch)=0.0403]Epoch 39/40:  24%|██████                   | 320/1321 [01:42<04:52,  3.43img/s, loss (batch)=0.0218]Epoch 39/40:  34%|████████▌                | 452/1321 [02:22<04:21,  3.32img/s, loss (batch)=0.0284]Epoch 39/40:  44%|███████████              | 584/1321 [03:03<03:50,  3.20img/s, loss (batch)=0.0246]Epoch 39/40:  54%|█████████████▌           | 716/1321 [03:43<03:00,  3.35img/s, loss (batch)=0.0502]Epoch 39/40:  64%|████████████████         | 848/1321 [04:25<02:24,  3.27img/s, loss (batch)=0.0261]Epoch 39/40:  74%|██████████████████▌      | 980/1321 [05:04<01:40,  3.38img/s, loss (batch)=0.0216]Epoch 39/40:  84%|████████████████████▏   | 1112/1321 [05:45<01:00,  3.45img/s, loss (batch)=0.0342]Epoch 39/40:  94%|███████████████████████▌ | 1244/1321 [06:26<00:23,  3.21img/s, loss (batch)=0.027]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 11.015107154846191
+Checkpoint 39 saved!
+Epoch 40/40:   4%|█                         | 54/1321 [00:21<06:40,  3.17img/s, loss (batch)=0.0249]Epoch 40/40:  14%|███▌                     | 186/1321 [01:02<05:26,  3.48img/s, loss (batch)=0.0238]Epoch 40/40:  24%|██████                   | 318/1321 [01:47<06:00,  2.78img/s, loss (batch)=0.0299]Epoch 40/40:  34%|████████▌                | 450/1321 [02:33<04:41,  3.09img/s, loss (batch)=0.0244]Epoch 40/40:  44%|███████████              | 582/1321 [03:19<04:21,  2.83img/s, loss (batch)=0.0302]Epoch 40/40:  54%|█████████████▌           | 714/1321 [04:03<03:28,  2.91img/s, loss (batch)=0.0244]Epoch 40/40:  64%|████████████████         | 846/1321 [04:50<02:31,  3.14img/s, loss (batch)=0.0238]Epoch 40/40:  74%|██████████████████▌      | 978/1321 [05:33<01:51,  3.08img/s, loss (batch)=0.0476]Epoch 40/40:  84%|████████████████████▏   | 1110/1321 [06:16<01:09,  3.04img/s, loss (batch)=0.0215]Epoch 40/40:  94%|██████████████████████▌ | 1242/1321 [06:59<00:25,  3.08img/s, loss (batch)=0.0258]Parameter down1.hab.attn.relative_position_bias_table has no gradient.
+Parameter down2.hab.attn.relative_position_bias_table has no gradient.
+Parameter down3.hab.attn.relative_position_bias_table has no gradient.
+Parameter down4.hab.attn.relative_position_bias_table has no gradient.
+Parameter up1.hab.attn.relative_position_bias_table has no gradient.
+Parameter up2.hab.attn.relative_position_bias_table has no gradient.
+Parameter up3.hab.attn.relative_position_bias_table has no gradient.
+Parameter up4.hab.attn.relative_position_bias_table has no gradient.
+Validation PSNR score: 10.98594856262207
+Checkpoint 40 saved!
