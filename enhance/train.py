@@ -5,10 +5,9 @@ FilePath     : /enh_yov5/enhance/train.py
 Description  :  
 Author       : Zhang Xiuyu
 LastEditors  : Zhang Xiuyu
-LastEditTime : 2024-08-19 16:38:10
+LastEditTime : 2024-08-20 09:18:23
 '''
 import argparse
-import logging
 import os
 import torch
 from pathlib import Path
@@ -61,7 +60,7 @@ def train_model(
              val_percent=val_percent, save_checkpoint=save_checkpoint, alpha=alpha)
     )
 
-    logging.info(f'''Starting training:
+    print(f'''Starting training:
         Epochs:            {epochs}
         Batch size:        {batch_size}
         Learning rate:     {learning_rate}
@@ -118,7 +117,7 @@ def train_model(
                 pbar.set_postfix(**{'loss (batch)': loss.item()})
 
                 # Evaluation round
-                division_step = (n_train // (5 * batch_size))
+                division_step = n_train // batch_size
                 if division_step > 0:
                     if global_step % division_step == 0:
                         histograms = {}
@@ -130,12 +129,12 @@ def train_model(
                                 if not (torch.isinf(value.grad) | torch.isnan(value.grad)).any():
                                     histograms['Gradients/' + tag] = wandb.Histogram(value.grad.data.cpu())
                             else:
-                                logging.warning(f"Parameter {tag} has no gradient.")
+                                print(f"Parameter {tag} has no gradient.")
 
                         val_score = evaluate(model, val_loader, device, mix_flag)
                         scheduler.step(val_score)
 
-                        logging.info('Validation PSNR score: {}'.format(val_score))
+                        print('Validation PSNR score: {}'.format(val_score))
                         try:
                             experiment.log({
                                 'learning rate': optimizer.param_groups[0]['lr'],
@@ -156,7 +155,7 @@ def train_model(
             Path(dir_checkpoint).mkdir(parents=True, exist_ok=True)
             state_dict = model.state_dict()
             torch.save(state_dict, str(dir_checkpoint / 'checkpoint_epoch{}.pth'.format(epoch)))
-            logging.info(f'Checkpoint {epoch} saved!')
+            print(f'Checkpoint {epoch} saved!')
 
 
 def get_args():
@@ -179,22 +178,21 @@ def get_args():
 if __name__ == '__main__':
     args = get_args()
 
-    logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    logging.info(f'Using device {device}')
+    print(f'Using device {device}')
     
     model = UNet(n_channels=args.channels, bilinear=args.bilinear)
     model = model.to(memory_format=torch.channels_last)
 
-    logging.info(f'Network:\n'
-                 f'\t{model.n_channels} images channels\n'
-                 f'\t{"Bilinear" if model.bilinear else "Transposed conv"} upscaling')
+    print(f'Network:\n'
+          f'\t{model.n_channels} images channels\n'
+          f'\t{"Bilinear" if model.bilinear else "Transposed conv"} upscaling')
 
     if args.load:
         state_dict = torch.load(args.load, map_location=device)
         del state_dict['mask_values']
         model.load_state_dict(state_dict)
-        logging.info(f'Model loaded from {args.load}')
+        print(f'Model loaded from {args.load}')
 
     model.to(device=device)
     try:
@@ -211,7 +209,7 @@ if __name__ == '__main__':
             channels=args.channels
         )
     except torch.cuda.OutOfMemoryError:
-        logging.error('Detected OutOfMemoryError! '
+        print('Detected OutOfMemoryError! '
                       'Enabling checkpointing to reduce memory usage, but this slows down training. '
                       'Consider enabling AMP (--amp) for fast and memory efficient training')
         torch.cuda.empty_cache()

@@ -26,5 +26,5 @@ class HybridLoss(nn.Module):
     def forward(self, pred, gt):
         l1_loss = self.l1_loss(pred, gt)
         ms_ssim_loss = self.ms_ssim_loss(pred, gt)
-        loss = self.alpha * l1_loss + (1 - self.alpha) * ms_ssim_loss
+        loss = self.alpha * ms_ssim_loss + (1 - self.alpha) * l1_loss
         return loss

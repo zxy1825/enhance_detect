@@ -5,9 +5,8 @@ FilePath     : /enh_yov5/enhance/enhance_utils/dataloader.py
 Description  :  
 Author       : Zhang Xiuyu
 LastEditors  : Zhang Xiuyu
-LastEditTime : 2024-08-19 14:33:41
+LastEditTime : 2024-08-20 09:17:42
 '''
-import logging
 import numpy as np
 import torch
 from PIL import Image
@@ -27,7 +26,7 @@ class EnhanceDataset(Dataset):
         if not self.ids:
             raise RuntimeError(f'No input file found in {images_dir}, make sure you put your images there')
         self.generator = GammaGenerator(channel)
-        logging.info(f'Creating dataset with {len(self.ids)} examples')
+        print(f'Creating dataset with {len(self.ids)} examples')
     
 
     def __len__(self):
@@ -36,9 +35,9 @@ class EnhanceDataset(Dataset):
 
     @staticmethod
     def preprocess(img):
-        img = img.transpose((2, 0, 1))
+        img = img.transpose((2, 0, 1)) # HWC to CHW
         if (img > 1).any():
-            img = img / 255.0
+            img = img / 255.0 # Normalize to [0, 1]
         return img
 
 

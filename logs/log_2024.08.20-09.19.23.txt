@@ -1,0 +1,16 @@
+Using device cuda
+Network:
+	3 images channels
+	Bilinear upscaling
+Creating dataset with 7363 examples
+Starting training:
+        Epochs:            100
+        Batch size:        2
+        Learning rate:     1e-05
+        Training size:     6627
+        Validation size:   736
+        Checkpoints:       True
+        Device:            cuda
+        mix precision:     True
+        Hybrid loss alpha: 0.8
+    

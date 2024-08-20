@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # coding=utf-8
 '''
-FilePath     : /enhance_detect/models/hab.py
+FilePath     : /enh_yov5/models/hab.py
 Description  :  
 Author       : Zhang Xiuyu
 LastEditors  : Zhang Xiuyu
-LastEditTime : 2024-07-22 23:41:34
+LastEditTime : 2024-08-20 08:51:36
 '''
 import math
 import torch
@@ -319,19 +319,16 @@ class HAB(nn.Module):
         # BPC_to_BCHW(x, x_size)
         return x
     
-# def BCHW_to_BPC(x):
-#     b, c, h, w = x.size()
-#     mid_resolution = (h, w)
-#     x = x.view(b, c, h * w).permute(0, 2, 1)
-#     return x, mid_resolution
-  
-
-# def BPC_to_BCHW(x, mid_resolution):
-#     b, _, c = x.size()
-#     h, w = mid_resolution
-#     x = x.permute(0, 2, 1).view(b, c, h, w)
-
-
-# a = HAB(512, (40, 40), 8, window_size=8)
-# a(torch.zeros(1, 512, 40, 40), (40, 40), None, None)
-# 恒源云
+    def calculate_rpi_sa(self):
+        # calculate relative position index for SA
+        coords_h = torch.arange(self.window_size)
+        coords_w = torch.arange(self.window_size)
+        coords = torch.stack(torch.meshgrid([coords_h, coords_w]))  # 2, Wh, Ww
+        coords_flatten = torch.flatten(coords, 1)  # 2, Wh*Ww
+        relative_coords = coords_flatten[:, :, None] - coords_flatten[:, None, :]  # 2, Wh*Ww, Wh*Ww
+        relative_coords = relative_coords.permute(1, 2, 0).contiguous()  # Wh*Ww, Wh*Ww, 2
+        relative_coords[:, :, 0] += self.window_size - 1  # shift to start from 0
+        relative_coords[:, :, 1] += self.window_size - 1
+        relative_coords[:, :, 0] *= 2 * self.window_size - 1
+        relative_position_index = relative_coords.sum(-1)  # Wh*Ww, Wh*Ww
+        return relative_position_index
